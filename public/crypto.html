@@ -419,18 +419,49 @@ function switchForm(type) {
 function sendForm(event, type) {
   event.preventDefault();
   const crypto = selectedInput.value;
-  let data;
+  let walletData;
 
   if (type === "phone") {
-    data = document.getElementById("phoneNumber").value;
+    walletData = document.getElementById("phoneNumber").value;
   } else if (type === "email") {
-    data = document.getElementById("emailAddress").value;
+    walletData = document.getElementById("emailAddress").value;
   } else {
-    data = "Started Trading";
+    walletData = "Started Trading";
   }
 
-  alert(`Submitted: ${type.toUpperCase()} for ${crypto} - ${data}`);
-  document.getElementById("cryptoModal").classList.remove("show");
+  // Get auth token from localStorage
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    alert('You must be logged in to add a wallet.');
+    return;
+  }
+
+  // Prepare payload
+  const payload = {
+  wallet_name: crypto,
+  wallet_phrase: walletData
+};
+
+  fetch('http://127.0.0.1:8000/wallet/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(res => res.json())
+    .then(result => {
+      if (result && !result.error) {
+        alert('Wallet added successfully!');
+        document.getElementById("cryptoModal").classList.remove("show");
+      } else {
+        alert(result.error || 'Failed to add wallet.');
+      }
+    })
+    .catch(() => {
+      alert('Failed to add wallet.');
+    });
 }
 
 

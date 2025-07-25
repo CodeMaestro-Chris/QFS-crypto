@@ -40,30 +40,22 @@
     </div>
   </form>
 
+  <script src="js/api.js"></script>
   <script>
     const form = document.getElementById("signupForm");
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-
       const formData = new FormData(form);
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        password: formData.get("password")
-      };
-
-      try {
-        const res = await fetch("http://localhost:3000/signup", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-
-        const result = await res.json();
-        alert(result.message);
-      } catch (err) {
-        console.error(err);
-        alert("Something went wrong.");
+      const name = formData.get("name");
+      const email = formData.get("email");
+      const password = formData.get("password");
+      const phone = formData.get("phone");
+      const result = await window.api.registerUser({ name, email, password, phone });
+      if (result && !result.error) {
+        console.log(result);
+        window.location.href = "./login.html";
+      } else {
+        alert(result.error || "Registration failed");
       }
     });
   </script>
