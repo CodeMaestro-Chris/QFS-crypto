@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Wallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="./images/logo.PNG" type="image/x-icon">
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./css/aos.css">
+    <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    *{
+      font-family: 'DM Sans', sans-serif;
+    }
+    body{
+        background-image: linear-gradient(90deg, #0d111cbb, #0d111cd2), url(./images/crypto.svg);
+    }
+    .connect{
+        height: 95vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        backdrop-filter: blur(2px);
+    }
+  </style>
+</head>
+<body>
+    <div class="connect col-8 col-lg-5 mx-auto p-5">
+        <h2 class="mb-3">Secure Wallet Connect</h2>
+        <a href="" class="btn primary-btn px-5 py-2" data-bs-toggle="modal" data-bs-target="#walletModal">Connect Wallet</a>
+    </div>
+
+    
+<!-- Wallet Connection Modal -->
+<div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="walletModalLabel">Connect Your Wallet</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Choose your preferred connection method:</p>
+        <button onclick="connectWallet()" class="btn btn-outline-light w-100 mb-3">Automatic Connection</button>
+        <button onclick="connectWallet()" class="btn btn-outline-light w-100">Manual Connection</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>

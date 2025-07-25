@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+
+/* General text styling override */
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: #f8f9fa;
+  background-color: #000510;
+}
+.primary-text{
+  color: #fa9f16;
+}
+h1 {
+  color: #ffffff;
+}
+.hero h1{
+    font-weight: 501;
+}
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    background-color: #fa9f1617;
+    border: 1px solid #fa9f1680;
+    color: #ff9900;
+    font-weight: 500;
+    box-shadow: 0px;
+}
+.nav-link{
+  position: relative;
+}
+.nav-link::before{
+  content: "";
+  height: 3px;
+  width: 0;
+  position: absolute;
+  left: 0px;
+  bottom: -2px;
+  background-color: #fa9f16;
+  transition: .3s;
+}
+.nav-link:hover{
+  color: #fa9f16 !important;
+}
+.nav-link:hover::before{
+  width: 105%;
+}
+
+/* Hero image adjustments */
+.hero-image {
+  max-width: 100%;
+}
+
+.primary-btn{
+  background-color: #fa9f16;
+  font-weight: 500;
+  font-size: 17px;
+  color: #000510;
+}
+/* Button hover */
+.primary-btn:hover {
+  background-color: #fd9903;
+  color: #000510;
+  box-shadow: 0 0 10px #faa01ab7;
+  transition: 0.2s ease-in-out;
+}
+
+.trusted-section {
+  padding: 3rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.trusted-text {
+  text-align: center;
+  font-size: 1rem;
+  color: #ccc;
+}
+.trusted-text span {
+  color: #fa9f16;
+}
+
+
+.logo-slider {
+  display: flex;
+  width: fit-content;
+  animation: slide 20s linear infinite;
+  gap: 5rem;
+}
+.logo-track {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  margin-top: 2rem;
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%) !important;
+}
+.logo-slider img {
+  height: 40px;
+  object-fit: contain;
+  /* filter: grayscale(1); */
+  transition: filter 0.3s ease;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-title h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+.section-title span {
+  color: #fa9f16;
+}
+
+.coin-card {
+  background-color: #0D121C;
+  border-radius: 12px;
+  padding: 20px;
+  /* margin-bottom: 30px; */
+  transition: 0.3s ease;
+  /* height: 100%; */
+  border: 1px solid rgb(68, 68, 68);
+}
+.coin-card:hover {
+  box-shadow: 0 0 12px #fa9f1677;
+}
+.coin-logo {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+.coin-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+.counter {
+  color: #cfcfcf;
+  font-size: 0.9rem;
+} 
+
+
+/* Left side content */
+.left-content {
+  flex: 1 1 480px;
+  max-width: 480px;
+}
+.left-content .subtitle {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.left-content .subtitle a {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+.left-content h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 32px;
+  color: var(--text-color);
+}
+
+/* Features List */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  row-gap: 22px;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+.feature-icon {
+  color: #fa9f16;
+  background: #262A34;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  fill: var(--text-muted);
+}
+.feature-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.feature-item:hover,
+.feature-item:focus {
+  color: var(--primary-green);
+  cursor: default;
+}
+.feature-item:hover .feature-icon,
+.feature-item:focus .feature-icon {
+  fill: var(--primary-green);
+}
+
+/* Right side portfolio card */
+
+.portfolio-card {
+  background: url(../images/Hc5jTmckpgbmLkodiG2EheXEZg.svg);
+  border-radius: 12px;
+  /* padding: 24px 28px; */
+  /* width: 340px; */
+  color: var(--text-color);
+ 
+}
+.portfolio{
+  background: #262a3485;
+  border: 1px solid rgb(68, 68, 68);
+  box-shadow: 
+    /* 0 0 50px 2px #14213d22, */
+    inset 0 0 20px #1e2b4d88;
+  backdrop-filter: blur(15px);
+  border-radius: 1rem;
+}
+.portfolio-card strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+.portfolio-card .portfolio-up {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+.crypto-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.crypto-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.crypto-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* flex-grow: 1; */
+}
+
+/* Coins icon background color placeholders */
+.crypto-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-shrink: 0; */
+}
+
+.crypto-icon img {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.crypto-name-symbol {
+  /* display: flex; */
+  flex-direction: column;
+  /* line-height: 1.1; */
+  color: var(--text-color);
+}
+.crypto-name-symbol span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.crypto-change {
+  color: #84C388 !important;
+  text-align: right;
+  font-weight: 600;
+  color: var(--primary-green);
+  font-size: 0.9rem;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+
+/* Responsive */
+@media (max-width: 860px) {
+  .container {
+    flex-direction: column;
+    padding: 32px 20px;
+  }
+  .left-content, .portfolio-card {
+    width: 100%;
+    max-width: none;
+  }
+  .portfolio-card {
+    margin-top: 40px;
+  }
+}
+
+.crypto-info-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-box {
+  width: 300px;
+  padding: 10px;
+}
+.feature-box p{
+  font-size: 1rem;
+}
+.solution{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-image: url(../images/blob.png);
+  background-size: 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.phone-image {
+  max-height: 500px;
+  z-index: 2;
+}
+.crypto-features{
+  height: 80dvh;
+}
+@media screen and (max-width:768px){
+  .feature-box{
+    position: static !important;
+  }
+  .eth-icon{
+    display: none;
+  }
+  .bit-icon{
+    position: absolute;
+    top: 35% !important;
+    right: -15% !important;
+  }
+  .crypto-features{
+    height: 60dvh !important;
+  }
+}
+@media screen and (max-width:991px){
+  .solution{
+    display: none !important;
+  }
+  .crypto-features{
+    height: 40dvh;
+  }
+}
+.bit-icon{
+  z-index: 3;
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  max-width: 180px;
+  filter: blur(2.5px);
+  width: 100%;
+  transform: rotate(20deg);
+}
+.eth-icon{
+  z-index: 1;
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  max-width: 100px;
+  width: 100%;
+  filter: blur(1.2px);
+  /* transform: rotate(340deg); */
+}
+
+.support{
+  background-color: #0D111C;
+  border-radius: 1rem;
+  position: relative;
+}
+.icon{
+  background-color: #000510;
+  padding: 20px;
+  border-radius: 50%;
+  max-width: 70px;
+  width: 100%;
+}
+
+.bg-darker{
+  background-color: #0D121C;
+}
+
+
+/* FAQ SECTION  */
+.accordion-item {
+  background-color: #0D111C !important;
+	margin-bottom: 10px;
+    border: none !important;
+	/* border: 1px solid var(--border-color-1); */
+	overflow: hidden;
+  background-color: transparent;
+}
+.accordion-header {
+	padding: 15px;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 17px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.accordion-header .icon {
+	font-size: 1.2em;
+	transition: transform 0.3s;
+  color: #fa9f16;
+}
+.accordion-button{
+  background-color: #0D111C;
+  color: white;
+}
+.accordion-header.active .icon {
+	transform: rotate(180deg);
+}
+.accordion-content {
+	padding: 15px;
+	display: none; 
+  background-color: #0D111C !important;
+  color: white !important;
+	font-size: 16px;
+	/* background-color: #fff; */
+	/* color: #333; */
+}
+.accordion-content.drop {
+	display: block;
+}
+.accordion-body{
+  color: white;
+}
+/* FAQ Section ends */
+
+.form{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#signupForm{
+  background-color: #0D121C;
+  border-radius: 12px;
+  padding: 20px;
+  /* margin-bottom: 30px; */
+  transition: 0.3s ease;
+  /* height: 100%; */
+  border: 1px solid rgb(68, 68, 68);
+}
+#signupForm input{
+  background-color: transparent;
+  width: 100%;
+}
+#signupForm input::placeholder{
+  color: gray;
+}
+#signupForm label{
+  margin-bottom: 5px;
+}
+#signupForm button{
+  width: 100%;
+}
+
+/* .crypto-icon{
+  padding: 1.8rem;
+  background-color: #000510;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #fa9f16;
+} */
+
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  display: none;
+  background-color: #fa9f16;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  padding: 12px 16px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.back-to-top.show {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.back-to-top.hide {
+  transform: translateY(100px);
+  opacity: 0;
+}

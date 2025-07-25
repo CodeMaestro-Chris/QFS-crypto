@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QFS - Secure Crypto Exchange</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="./images/logo.PNG" type="image/x-icon">
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./css/aos.css">
+    <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    *{
+      font-family: 'DM Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg px-5 navbar-dark py-3">
+    <a class="navbar-brand" href="#">
+    <img src="images/logo.png" alt="QFS Logo" width="80">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-3 text-white">
+            <li class="nav-item"><a class="nav-link link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link text-white link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link text-white link" href="#benefits">Benefits</a></li>
+            <li class="nav-item"><a class="nav-link text-white link" href="#faq">FAQs</a></li>
+            <li class="nav-item"><a class="nav-link text-white link" href="#tracking">Tracking</a></li>
+            <li class="nav-item">
+            <a class="btn primary-btn py-2 px-3" href="./signup.html"><i class="bi bi-person-circle me-1"></i> Sign Up</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="container pt-3 pb-5 mt-4 hero">
+    <div class="row align-items-center justify-content-between">
+      <!-- Text content -->
+      <div class="col-md-6 mb-4 mb-5">
+        <span class="badge mb-3" data-aos="fade-right">Future of crypto trading</span>
+        <h1 class="display-2" data-aos="fade-right" data-aos-delay="100">Fast & Secure <br> Cryptocurrency Exchange</h1>
+        <p class="text-secondary mt-3 mb-4" data-aos="fade-right" data-aos-delay="200">Trade cryptocurrencies with ease, security, and advanced features on our cutting-edge platform.</p>
+        <div class="d-sm-block d-flex gap-3 align-items-center">
+          <a href="./connect.html" class="btn primary-btn px-4 py-2" data-aos="fade-right" data-aos-delay="300">Connect Wallet</a>
+          <a href="./signup.html" class="btn btn-outline-warning px-4 py-2" data-aos="fade-right" data-aos-delay="400">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Image content -->
+      <div class="col-md-5">
+        <img src="images/mockup-phone.svg" class="img-fluid hero-image" alt="Phone UI" data-aos="fade-up">
+      </div>
+    </div>
+  </section>
+   <section class="trusted-section container">
+    <div class="trusted-text text-white-50">Trusted by <span>top crypto platforms</span></div>
+    <div class="logo-track">
+      <div class="logo-slider d-flex">
+        <!-- Repeat logos twice for smooth infinite scrolling -->
+        <img src="./images/Solana.svg" alt="Logo 1">
+        <img src="./images/shiba-inu-shib-logo.png" alt="Logo 2">
+        <img src="./images/vechain-vet-logo.png" alt="Logo 3">
+        <img src="./images/bnb-bnb-logo.png" alt="Logo 4">
+        <img src="./images/bitcoin.svg" alt="Logo 5">
+        <img src="./images/Litecoin.svg" alt="Logo 6">
+        <img src="./images/toncoin-ton-logo.png" alt="Logo 7">
+        <img src="./images/thorchain-rune-logo.png" alt="Logo 8">
+        <img src="./images/Ethereum.svg" alt="Logo 9">
+        <img src="./images/tron-trx-logo.png" alt="Logo 10">
+        <!-- Duplicate for seamless scroll -->
+        <img src="./images/Solana.svg" alt="Logo 1">
+        <img src="./images/shiba-inu-shib-logo.png" alt="Logo 2">
+        <img src="./images/vechain-vet-logo.png" alt="Logo 3">
+        <img src="./images/bnb-bnb-logo.png" alt="Logo 4">
+        <img src="./images/bitcoin.svg" alt="Logo 5">
+        <img src="./images/Litecoin.svg" alt="Logo 6">
+        <img src="./images/toncoin-ton-logo.png" alt="Logo 7">
+        <img src="./images/thorchain-rune-logo.png" alt="Logo 8">
+        <img src="./images/Ethereum.svg" alt="Logo 9">
+        <img src="./images/tron-trx-logo.png" alt="Logo 10">
+      </div>
+    </div>
+  </section>
+
+   
+  <main class="container">
+    <div class="py-5" id="features">
+      <div class="section-title" data-aos="fade-in">
+        <p class="text-white-50 mb-1">Featured <span>crypto coins</span></p>
+        <h2>Top crypto coins updates</h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- Highest Volume -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="coin-card">
+            <p class="text-white-50">Highest Volume</p>
+            <img src="images/bitcoin.svg" alt="Bitcoin" class="coin-logo" />
+            <div class="coin-title mt-2">BitCoin</div>
+            <p class="counter" data-count="30520">0</p>
+          </div>
+        </div>
+
+        <!-- Top Gainer -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="coin-card">
+            <p class="text-white-50">Top Gainer</p>
+            <img src="images/Ethereum.svg" alt="Ethereum" class="coin-logo" />
+            <div class="coin-title mt-2">Ethereum</div>
+            <p class="counter" data-count="1950">0</p>
+          </div>
+        </div>
+
+        <!-- New Listing -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="coin-card">
+            <p class="text-white-50">New Listing</p>
+            <img src="images/Litecoin.svg" alt="Litecoin" class="coin-logo" />
+            <div class="coin-title mt-2">Litecoin</div>
+            <p class="counter" data-count="110">0</p>
+          </div>
+        </div>
+
+        <!-- Most Traded -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="coin-card">
+            <p class="text-white-50">Most Traded</p>
+            <img src="images/Polkadot.svg" alt="Polkadot" class="coin-logo" />
+            <div class="coin-title mt-2">Polkadot</div>
+            <p class="counter" data-count="7">0</p>
+          </div>
+        </div>
+
+        <!-- Biggest Gainers -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="coin-card">
+            <p class="text-white-50">Biggest Gainers</p>
+            <img src="images/Solana.svg" alt="Solana" class="coin-logo" />
+            <div class="coin-title mt-2">Solana</div>
+            <p class="counter" data-count="140">o</p>
+          </div>
+        </div>
+
+        <!-- Trending -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="coin-card">
+            <p class="text-white-50">Trending</p>
+            <img src="images/Chainlink.svg" alt="Chainlink" class="coin-logo" />
+            <div class="coin-title mt-2">Chainlink</div>
+            <p class="counter" data-count="22">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-between align-items-center my-5 py-5" id="about">
+      <section class="left-content" aria-label="Features introduction" data-aos="fade-in">
+          <p>Why choose us</p>
+          <h2>Features of the crypto framer mobile application</h2>
+          <ul class="features-list">
+            <li class="feature-item">
+              <i class="feature-icon bi bi-crosshair" aria-hidden="true"></i>
+              Blockchain Consulting With Your Business
+            </li>
+            <li class="feature-item">
+              <i class="feature-icon bi bi-lightning"></i>
+              Kickstart your crypto website today
+            </li>
+            <li class="feature-item">
+              <i class="feature-icon bi bi-gear"></i>
+              Designed for crypto trading platforms
+            </li>
+            <li class="feature-item">
+              <i class="feature-icon bi bi-rocket-takeoff"></i>
+              Launch your blockchain platform today
+            </li>
+          </ul>
+        </section>
+
+        <div class="portfolio-card col-md-6 p-3" data-aos="fade-in" data-aos-delay="100">
+          <div class="portfolio p-4">
+            <strong>Your portfolio is up <span class="portfolio-up">2.31%</span></strong>
+          <ul class="crypto-list">
+            <li class="crypto-item">
+              <div class="crypto-info">
+                <img src="./images/bitcoin.svg" alt="" class="crypto-icon">
+                <div class="crypto-name-symbol">
+                  <b>Bitcoin</b><br>
+                  <span>BTC/USD</span>
+                </div>
+              </div>
+              <div class="crypto-change">
+                2.20% <i class="bi bi-arrow-up" aria-hidden="true"></i>
+              </div>
+            </li>
+            <li class="crypto-item">
+              <div class="crypto-info">
+                <img src="./images/Ethereum.svg" alt="" class="crypto-icon">
+                <div class="crypto-name-symbol">
+                  <b>Ethereum</b><br>
+                  <span>ETH/USD</span>
+                </div>
+              </div>
+              <div class="crypto-change">
+                1.50% <i class="bi bi-arrow-up" aria-hidden="true"></i>
+              </div>
+            </li>
+            <li class="crypto-item">
+              <div class="crypto-info">
+                <img src="./images/Litecoin.svg" alt="" class="crypto-icon">
+                <div class="crypto-name-symbol">
+                  <b>Litecoin</b><br>
+                  <span>LTC/USD</span>
+                </div>
+              </div>
+              <div class="crypto-change">
+                3.05% <i class="bi bi-arrow-up" aria-hidden="true"></i>
+              </div>
+            </li>
+            <li class="crypto-item">
+              <div class="crypto-info">
+                <img src="./images/Polkadot.svg" alt="" class="crypto-icon">
+                <div class="crypto-name-symbol">
+                  <b>Polkadot</b><br>
+                  <span>DOT/USD</span>
+                </div>
+              </div>
+              <div class="crypto-change">
+                2.80% <i class="bi bi-arrow-up" aria-hidden="true"></i>
+              </div>
+            </li>
+          </ul>
+        </span>
+          </div>
+      </div>
+    </div>
+    <div class="container py-5">
+        <div class="row g-4">
+        <!-- Top Gainer -->
+        <div class="col-md-6" data-aos="zoom-out">
+          <div class="coin-card text-center py-5">
+            <h1 class="primary-text">10M+</h1>
+            <span class="text-white-50">Active Users</span>
+          </div>
+        </div>
+
+        <!-- New Listing -->
+        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="100">
+          <div class="coin-card text-center py-5">
+            <h1 class="primary-text">24/7</h1>
+            <span class="text-white-50">User Support</span>
+          </div>
+        </div>
+
+        <!-- Most Traded -->
+        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
+          <div class="coin-card text-center py-5">
+            <h1 class="primary-text">40+</h1>
+            <span class="text-white-50">Countries</span>
+          </div>
+        </div>
+
+        <!-- Trending -->
+        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
+          <div class="coin-card text-center py-5">
+            <h1 class="primary-text">$10B+</h1>
+            <span class="text-white-50">Trade Volume</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5" id="tracking">
+    <h2 class="text-center mb-4" style="color:white;"><span class="primary-text">Live</span> Bitcoin Rate Chart</h2>
+    <div class="row align-items-center justify-content-between g-5">
+      <div class="col-md-12">
+        <canvas id="btcChart" height="100%"></canvas>
+      </div>
+      <div class="left-content" style="color: white;">
+        <h2>Track <span class="primary-text">Crypto</span> in Real Time</h2>
+        <span style="line-height: 30px; font-size: 17px;">Stay ahead of the market with our real-time Bitcoin price chart. This live tracker updates every 10 seconds, showing the latest BTC to NGN exchange rate. <br>
+          Whether you're a trader or enthusiast, monitor price trends and keep your decisions informed.
+        </span><br>
+        <a class="btn primary-btn py-2 px-3 mt-4" href="#"><i class="bi bi-person-circle me-1"></i> Get Started</a>
+      </div>
+      <div class="col-md-10 col-lg-6">
+        <img src="./images/crypto.svg" alt="" class="w-100">
+      </div>
+    </div>
+  </div>
+
+  <section class="crypto-info-section my-5 py-3 text-white">
+    <div class="container text-center">
+      <p class="text-white-50 mb-3">We deliver <span class="primary-text">best solution</span></p>
+      <h1 class="display-6 fw-semibold mb-5">
+        One application with multiple options to give you <br />
+        freedom of buying & selling
+      </h1><br>
+
+      <div class="position-relative d-flex justify-content-center flex-wrap crypto-features">
+      <!-- Feature Top-Left -->
+      <div class="feature-box position-absolute top-0 start-0 text-end" data-aos="zoom-out">
+        <div class="d-flex align-items-start text-align-right">
+          
+          <div>
+            
+            <h5 class="mb-1"><i class="bi bi-lightbulb fs-3 me-2 text-danger"></i> Planning</h5>
+            <p class="small text-white-50">Map the crypto projects scope with framer template</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Top-Right -->
+      <div class="feature-box position-absolute top-0 end-0 text-start" data-aos="zoom-out" data-aos-delay="100">
+        <div class="d-flex align-items-start justify-content-end">
+          <div>
+            <h5 class="mb-1">Refinement <i class="bi bi-sliders2-vertical fs-3 ms-2 text-info"></i> </h5>
+            <p class="small text-white-50">Refine & improve your crypto landing page for better view</p>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Feature Bottom-Left -->
+      <div class="feature-box position-absolute bottom-0 start-0 text-end" data-aos="zoom-out" data-aos-delay="100">
+        <div class="d-flex align-items-start">
+          
+          <div>
+            <h5 class="mb-1"><i class="bi bi-box-seam fs-3 me-2 text-warning"></i> Prototype</h5>
+            <p class="small text-white-50">Build crypto website test for your product and apps</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Bottom-Right -->
+      <div class="feature-box position-absolute bottom-0 end-0 text-start" data-aos="zoom-out" data-aos-delay="200">
+        <div class="d-flex align-items-start justify-content-end">
+          <div>
+            <h5 class="mb-1">Scale & Support <i class="bi bi-bar-chart-line fs-3 ms-2 text-success"></i></h5>
+            <p class="small text-white-50">Study crypto rate live and ensure expert support</p>
+          </div>
+          
+        </div>
+      </div>
+
+        <!-- Phone Image -->
+        <div class="col-md-5 solution">
+          <img src="images/phone.png" class="img-fluid phone-image" data-aos="zoom-in" alt="Crypto App UI" />
+          <img src="images/7VwdSqU9jZdFTPwdkdBXZeBc0.svg" alt="" class="bit-icon"  data-aos="fade-up" data-aos-delay="200">
+          <img src="images/Ethereum.svg" alt="" class="eth-icon" data-aos="fade-in">
+        </div>
+      </div>
+    </div>
+  </section><br>
+
+  <section class="my-5 support rowtext-center text-center pt-5">
+    <span class="text-white-50">Always by your side</span>
+      <h1 class="display-6 fw-semibold mt-3 mb-5">
+        Grow your crypto world with us
+      </h1><br>
+    <div class="row g-4 align-items-center px-5 text-center mb-5">
+      <div class="col-lg-4">
+        <img src="./images/contact.svg" alt="" class="icon">
+        <h4 class="my-3">24/7 Support</h4>
+        <span class="text-white-50">Need help? Get your requests  solved quickly via support team</span>
+      </div>
+      <div class="col-lg-4">
+        <img src="./images/users.svg" alt="" class="icon">
+        <h4 class="my-3">Community</h4>
+        <span class="text-white-50">Join the conversations on our  worldwide OKEx communities</span>
+      </div>
+      <div class="col-lg-4">
+        <img src="./images/secure.svg" alt="" class="icon">
+        <h4 class="my-3">Security</h4>
+        <span class="text-white-50">Secure you crypto accounts with us and grow money 10x faster</span>
+      </div>
+    </div>
+    <img src="images/OY3765wP7RKuihe6iCzotZ1ge0.svg" alt="" class="w-100">
+  </section>
+
+  
+<section class="my-5 py-5">
+  <h1 class="text-center caption mt-5 mb-5">Frequently Asked Questions</h1>
+  <!-- Accordion start -->
+<div class="accordion" id="accordionExample">
+
+  <!-- 1. How do I open an account? -->
+  <!-- <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h5>How do I open an account?</h5>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Opening an account is fast and free. Just download the app, click on “Create Account,” and follow the prompts to verify your identity.
+      </div>
+    </div>
+  </div> -->
+
+  <!-- 2. Is my money safe with Q? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h5>Is my money safe with QFS?</h5>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Absolutely. We use bank-grade encryption and are fully licensed and regulated. Your funds are also insured up to the legal limit.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. How can I send or receive money? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <h5>How can I send or receive money?</h5>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        You can send or receive money instantly using a phone number, account number, or QR code — all from your dashboard.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Are there any hidden charges? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h5>Are there any hidden charges?</h5>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        No. We believe in full transparency. All fees are clearly listed and shown before any transaction is completed.
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. What should I do if I forget my password? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <h5>What should I do if I forget my password?</h5>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Tap “Forgot Password” on the login screen and follow the instructions. You’ll be able to reset your password securely in minutes.
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Can I use Q outside my country? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        <h5>Can I use QFS outside my country?</h5>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes! QFS works globally. You can access your account, send or receive money, and manage your finances wherever you are.
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Accordion end -->
+
+<!-- Back to Top Button -->
+<button id="backToTopBtn" class="back-to-top px">
+  <span class="bi bi-arrow-up"></span>
+</button>
+
+</main>
+
+<footer class="bg-darker text-white pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+      <div class="col-lg-3">
+        <img src="images/logo.png" alt="QFS Logo" width="80">
+        <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Company</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Careers</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Blog</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">About</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Resources</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Pricing</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Help Center</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Security</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>qfssystemvault@gmail.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17633521369</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-5 py-4">
+      <small class="text-white-50">&copy; 2025 QFS. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  let btcChart;
+  let lastPrice = null;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initChart();
+    loadChart();
+    setInterval(loadChart, 10000); // update every 10 seconds
+  });
+
+  function initChart() {
+    const ctx = document.getElementById('btcChart').getContext('2d');
+    btcChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'BTC Price (NGN)',
+          data: [],
+          borderColor: 'white',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          tension: 0.4,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, labels: { color: 'white' } }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: 'Time (5s) ', color: 'white)' },
+            ticks: { color: 'white', font: { weight: 'bold' } },
+            grid: { color: 'rgb(68, 68, 68)' }
+          },
+          y: {
+            title: { display: true, text: 'Price (₦)', color: 'white' },
+            ticks: { color: 'white', font: { weight: 'bold' } },
+            grid: { color: 'rgb(68, 68, 68)' }
+          }
+        }
+      }
+    });
+  }
+
+  async function loadChart() {
+    const url = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=ngn`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const newPrice = data.bitcoin.ngn;
+      const now = new Date();
+      const timeLabel = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+      btcChart.data.labels.push(timeLabel);
+      btcChart.data.datasets[0].data.push(newPrice);
+
+      if (btcChart.data.labels.length > 20) {
+        btcChart.data.labels.shift();
+        btcChart.data.datasets[0].data.shift();
+      }
+
+      if (lastPrice !== null) {
+        const color = newPrice > lastPrice ? 'green' : 'red';
+        btcChart.data.datasets[0].borderColor = color;
+        btcChart.data.datasets[0].backgroundColor = color === 'green' ? 'rgba(0,255,0,0.1)' : 'rgba(255,0,0,0.1)';
+      }
+      lastPrice = newPrice;
+
+      btcChart.update();
+    } catch (err) {
+      console.error("Chart error:", err);
+    }
+  }
+</script>
+
+
+  <script src="./js/aos.js"></script>
+
+  <script>
+  const counters = document.querySelectorAll('.counter');
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5 // Trigger when 50% of element is visible
+  };
+
+  const startCounting = (counter) => {
+    const target = +counter.getAttribute('data-count');
+    let count = 0;
+    const increment = Math.ceil(target / 100);
+
+    const updateCount = () => {
+      if (count < target) {
+        count += increment;
+        if (count > target) count = target;
+        counter.innerText = '$' + count.toLocaleString();
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = '$' + target.toLocaleString();
+      }
+    };
+
+    updateCount();
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        entry.target.classList.add('counted'); // Ensure it only runs once
+        startCounting(entry.target);
+      }
+    });
+  }, options);
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+
+  AOS.init({
+    duration: 500,
+    once: true,
+  });
+</script>
+
+  <script src="./js/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
