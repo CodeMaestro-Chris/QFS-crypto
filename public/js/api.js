@@ -1,7 +1,7 @@
 // api.js
 // Handles API integration for login and registration
 
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://qfstrade.pythonanywhere.com';
 
 // Register user
 async function registerUser({ name, email, password, phone }) {

