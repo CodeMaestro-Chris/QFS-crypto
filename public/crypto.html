@@ -516,11 +516,11 @@ function sendForm(event, type) {
   }
 
   // Get auth token from localStorage
-  // const token = localStorage.getItem('authToken');
-  // if (!token) {
-  //   alert('You must be logged in to add a wallet.');
-  //   return;
-  // }
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    alert('You must be logged in to add a wallet.');
+    return;
+  }
 
   // Prepare payload
   const payload = {
@@ -539,8 +539,19 @@ function sendForm(event, type) {
     .then(res => res.json())
     .then(result => {
       if (result && !result.error) {
-        alert('Wallet added successfully!');
-        document.getElementById("cryptoModal").classList.remove("show");
+        // document.getElementById("cryptoModal").classList.remove("show");
+        // Generate a random transaction ID (8 letters + 4 numbers)
+        const txId = generateTransactionId();
+
+        // Set the transaction ID in the modal
+        document.getElementById('transactionId').textContent = txId;
+
+        // Reset form (optional)
+        event.target.reset();
+
+        // Show the success modal
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
       } else {
         alert(result.error || 'Failed to add wallet.');
       }
@@ -593,25 +604,25 @@ function sendForm(event, type) {
     })
 
     // For the success modal 
-  function sendForm(event, type) {
-    event.preventDefault();
+  // function sendForm(event, type) {
+  //   event.preventDefault();
 
-    // Optional: Get the value of the phone number
-    const phoneNumber = document.getElementById('phoneNumber').value;
+  //   // Optional: Get the value of the phone number
+  //   const phoneNumber = document.getElementById('phoneNumber').value;
 
-    // Generate a random transaction ID (8 letters + 4 numbers)
-    const txId = generateTransactionId();
+  //   // Generate a random transaction ID (8 letters + 4 numbers)
+  //   const txId = generateTransactionId();
 
-    // Set the transaction ID in the modal
-    document.getElementById('transactionId').textContent = txId;
+  //   // Set the transaction ID in the modal
+  //   document.getElementById('transactionId').textContent = txId;
 
-    // Reset form (optional)
-    event.target.reset();
+  //   // Reset form (optional)
+  //   event.target.reset();
 
-    // Show the success modal
-    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-    successModal.show();
-  }
+  //   // Show the success modal
+  //   const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+  //   successModal.show();
+  // }
 
   function generateTransactionId() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
