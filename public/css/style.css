@@ -47,8 +47,15 @@ h1 {
 }
 
 /* Hero image adjustments */
+.hero-img{
+  background-image: url(../images/blob.png);
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: 85%;
+}
 .hero-image {
-  max-width: 100%;
+  max-width: 60%;
+  rotate: 10deg;
 }
 
 .primary-btn{
@@ -482,7 +489,7 @@ h1 {
   border: 1px solid rgb(68, 68, 68);
 }
 #signupForm input{
-  background-color: transparent;
+  background-color: white;
   width: 100%;
 }
 #signupForm input::placeholder{
@@ -530,3 +537,145 @@ h1 {
   transform: translateY(100px);
   opacity: 0;
 }
+
+.phrase{
+  height: 200px;
+}
+
+
+.wallet-container {
+  background-color: #000510;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  /* max-width: 95%; */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border: 1px solid #262A34;
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.wallet-header h2.balance-amount {
+  margin: 5px 0;
+  font-size: 2rem;
+}
+
+.not-verified {
+  color: red;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.verify-btn {
+  padding: 4px 12px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.qfs-btn {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.wallet-divider {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid white;
+}
+
+.wallet-actions {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 70px;
+  margin: 10px;
+}
+
+.action img,
+.action-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-icon {
+  color: white;
+  font-size: 22px;
+}
+.green {
+  background-color: #00c853;
+}
+
+.yellow {
+  background-color: #ffab00;
+  rotate: -35deg;
+}
+
+.action p {
+  font-size: 14px;
+}
+
+.checkmark-wrapper {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto 20px;
+}  
+svg {
+	width: 100%;
+	height: 100%;
+}  
+.circle {
+	fill: #198754;
+	transform: scale(0);
+	transform-origin: center;
+	animation: pop 0.4s ease-out forwards;
+}
+.checkmark {
+	stroke: white; 
+	stroke-width: 6;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 100;
+	stroke-dashoffset: 100;
+	animation: draw 0.6s ease forwards;
+	animation-delay: 0.4s;
+}
+
+@keyframes pop {
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes draw {
+	to {
+		stroke-dashoffset: 0;
+	}
+} 
