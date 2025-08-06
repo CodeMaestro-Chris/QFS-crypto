@@ -50,11 +50,11 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav gap-3 text-white">
             <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#about/index.html">About</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#features/index.html">Features</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#benefits/index.html">Benefits</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#faq/index.html">FAQs</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#tracking/index.html">Tracking</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="./index.html#about">About</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="./index.html#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="./index.html#benefits">Benefits</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="./index.html#faq">FAQs</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="./index.html#tracking">Tracking</a></li>
             
         </ul>
     </div>
@@ -68,7 +68,7 @@
         <span class="badge mb-3" data-aos="fade-up">Future of crypto trading</span>
         <h1 class="display-3" data-aos="fade-up" data-aos-delay="200">Fast & Secure <br> Cryptocurrency Exchange</h1>
         <p class="text-secondary mt-3 mb-4 col-lg-6 mx-auto" data-aos="fade-up" data-aos-delay="300">Trade cryptocurrencies with ease, security, and advanced features on our cutting-edge platform.</p>
-        <a href="#crypto" class="btn primary-btn px-4 py-2" data-aos="fade-up" data-aos-delay="300">Connect Wallet</a>
+        <a href="./transact.html" class="btn primary-btn px-4 py-2" data-aos="fade-up" data-aos-delay="300">Start Trading</a>
       </div>
     </div>
     <img src="./images/OY3765wP7RKuihe6iCzotZ1ge0.svg" class="w-100 mt-5" alt="">
@@ -89,18 +89,18 @@
   <hr class="wallet-divider" />
 
   <div class="wallet-actions">
-    <div class="action">
+    <a href="./transact.html" class="action text-white text-decoration-none">
       <div class="action-icon bg-danger"><i class="bi bi-arrow-up"></i></div>
       <p>Send</p>
-    </div>
-    <div class="action">
+    </a>
+    <a href="./transact.html" class="action text-white text-decoration-none">
       <div class="action-icon green"><i class="bi bi-arrow-down"></i></div>
       <p>Receive</p>
-    </div>
-    <div class="action">
+    </a>
+    <a href="./transact.html" class="action text-white text-decoration-none">
       <div class="action-icon yellow"><i class="bi bi-link"></i></div>
       <p>Link Wallet</p>
-    </div>
+    </a>
   </div>
 </div>
 
@@ -135,14 +135,14 @@
 
   <div class="container py-5" id="crypto">
     <h2 class="text-center mb-4">Select a Cryptocurrency</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="crypto-container">
+    <div class="row g-4" id="crypto-container">
             
     </div>
   </div>
 
   <!-- Crypto Cards Grid -->
 <div class="container mt-5">
-  <div class="row row-cols-1 row-cols-md-3 g-4" id="crypto-container">
+  <div class="d-flex g-4" id="crypto-container">
     <!-- Cards will be injected here -->
   </div>
 </div>
@@ -475,9 +475,9 @@ const selectedCryptoTitle = document.getElementById("selectedCryptoTitle");
 
 coins.forEach(coin => {
   const col = document.createElement("div");
-  col.className = "col";
+  col.className = "col-12 col-md-3";
   col.innerHTML = `
-    <div class="crypto-card text-center p-3 shadow-sm border rounded" data-name="${coin.name}" data-bs-toggle="modal" data-bs-target="#cryptoModal">
+    <div class="crypto-card text-center p-3 shadow-sm border rounded mx-auto" data-name="${coin.name}" data-bs-toggle="modal" data-bs-target="#cryptoModal">
       <img src="${coin.logo}" alt="${coin.name}" class="crypto-logo mb-2" style="width: 50px; height: 50px; border-radius: 50%">
       <h5>${coin.name}</h5>
     </div>

