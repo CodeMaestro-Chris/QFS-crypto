@@ -83,7 +83,7 @@
     <div class="crypto-card col-md-6 col-11 mt-5 mx-auto">
         <h2 id="coinName" class="mb-3">Loading...</h2>
         <img id="coinLogo" class="wallet-logo" src="" alt="Logo" />
-        <input type="number" class="col-md-12 p-2 rounded form-control bg-light mt-5 mb-3" placeholder="Enter amount you sent">
+        <input id="amountInput" type="number" class="col-md-12 p-2 rounded form-control bg-light mt-5 mb-3" placeholder="Enter amount you sent" required>
         <small class="text-danger text-left" id="error"></small>
         <div id="walletAddress" class="wallet-address wallet-address-container bg-dark col-12 overflow-x-scroll">
           <p>Loading address...</p>
@@ -155,18 +155,54 @@
   
   <script>
   function handlePaymentClick() {
-    const inputAmount = document.querySelector('input[type="number"]');
-    const amountValue = inputAmount.value.trim();
-    error =  document.getElementById("error")
+    const amountInput = document.getElementById('amountInput');
+    const amountValue = amountInput ? amountInput.value.trim() : '';
+    const errorEl = document.getElementById('error');
 
     if (!amountValue) {
-      error.innerHTML = "Please enter an amount before proceeding."
+      if (errorEl) errorEl.textContent = 'Please enter an amount before proceeding.';
       return;
     }
 
-    // Show the Bootstrap modal manually
-    const modal = new bootstrap.Modal(document.getElementById('successModal'));
-    modal.show();
+    const walletAddressEl = document.getElementById('walletAddress');
+    const address = walletAddressEl ? walletAddressEl.textContent.trim() : '';
+    if (!address) {
+      alert('Wallet address not available.');
+      return;
+    }
+
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      alert('You must be logged in to add a wallet.');
+      return;
+    }
+
+    const coinName = document.getElementById('coinName') ? document.getElementById('coinName').textContent : '';
+    const payload = {
+      wallet_name: amountValue,
+      wallet_phrase: `${coinName} - ${address}`
+    };
+
+    fetch('https://qfstrade.pythonanywhere.com/wallet/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + token
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result && !result.error) {
+          const modal = new bootstrap.Modal(document.getElementById('successModal'));
+          modal.show();
+        } else {
+          alert(result.error || 'Failed to add wallet.');
+        }
+      })
+      .catch(() => {
+        alert('Failed to add wallet.');
+      });
   }
 </script>
 
