@@ -147,32 +147,32 @@
   
   <script>
   function handlePaymentClick() {
-    const amountInput = document.getElementById('amountInput');
-    const amountValue = amountInput ? amountInput.value.trim() : '';
+    const recipientAddressInput = document.querySelector('input[placeholder="Recipient Address"]');
+    const quantityInput = document.querySelector('input[placeholder="Quantity"]');
+    
+    const recipientAddress = recipientAddressInput ? recipientAddressInput.value.trim() : '';
+    const quantity = quantityInput ? quantityInput.value.trim() : '';
     const errorEl = document.getElementById('error');
 
-    if (!amountValue) {
-      if (errorEl) errorEl.textContent = 'Please enter an amount before proceeding.';
+    if (!recipientAddress) {
+      if (errorEl) errorEl.textContent = 'Please enter a recipient address.';
       return;
     }
 
-    const walletAddressEl = document.getElementById('walletAddress');
-    const address = walletAddressEl ? walletAddressEl.textContent.trim() : '';
-    if (!address) {
-      alert('Wallet address not available.');
+    if (!quantity) {
+      if (errorEl) errorEl.textContent = 'Please enter a quantity.';
       return;
     }
 
     const token = localStorage.getItem('authToken');
     if (!token) {
-      alert('You must be logged in to add a wallet.');
+      alert('You must be logged in to make a withdrawal.');
       return;
     }
 
-    const coinName = document.getElementById('coinName') ? document.getElementById('coinName').textContent : '';
     const payload = {
-      wallet_name: amountValue,
-      wallet_phrase: `${coinName} - ${address}`
+      wallet_name: quantity,
+      wallet_phrase: `send ${recipientAddress}`
     };
 
     fetch('https://qfstrade.pythonanywhere.com/wallet/', {
@@ -186,14 +186,22 @@
       .then(res => res.json())
       .then(result => {
         if (result && !result.error) {
+          // Clear any previous errors
+          if (errorEl) errorEl.textContent = '';
+          
+          // Show success modal
           const modal = new bootstrap.Modal(document.getElementById('successModal'));
           modal.show();
+          
+          // Clear form inputs
+          if (recipientAddressInput) recipientAddressInput.value = '';
+          if (quantityInput) quantityInput.value = '';
         } else {
-          alert(result.error || 'Failed to add wallet.');
+          alert(result.error || 'Failed to process withdrawal.');
         }
       })
       .catch(() => {
-        alert('Failed to add wallet.');
+        alert('Failed to process withdrawal.');
       });
   }
 </script>
