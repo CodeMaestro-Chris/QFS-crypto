@@ -80,21 +80,14 @@
 </head>
 <body>
   <form action="">
-    <div class="crypto-card col-md-6 col-11 mt-5 mx-auto">
-        <span id="coinName" class="fs-3 me-1">Loading...</span> <span class="bg-dark px-2" id="coinCurrency"></span><br>
+    <div class="crypto-card col-md-6 col-11 mt-5 mx-auto py-5">
+        <span class="mb-3 fs-4">Send <span id="coinName" class="fw-semibold">Loading...</span></span><br>
+        
         <img id="coinLogo" class="wallet-logo mt-3" src="" alt="Logo" />
-        <input id="amountInput" type="number" class="col-md-12 p-2 rounded form-control bg-light mt-5 mb-3" placeholder="Enter amount you sent" required>
+        <input id="amountInput" type="text" class="col-md-12 p-2 rounded form-control bg-light mt-5 mb-3" placeholder="Recipient Address" required>
+        <input id="amountInput" type="text" class="col-md-12 p-2 rounded form-control bg-light mt-3 mb-3" placeholder="Quantity" required>
         <small class="text-danger text-left" id="error"></small>
-        <div id="walletAddress" class="wallet-address wallet-address-container bg-dark col-12 overflow-x-scroll">
-          <p>Loading address...</p>
-        </div>
-        <div class="mt-0 mb-3">
-          <button onclick="copyAddress()" class="btn bg-dark text-white"><span class="bi bi-copy"></span></button>
-          <button onclick="shareAddress()" class="btn bg-dark text-white"><span class="bi bi-share-fill"></span></button>
-        </div>
-        <span class="mt-4 fw-semibold">Scan the code below</span><br>
-        <img id="qrCode" alt="QR Code Loading..." width="150" />
-        <button type="button" class="btn primary-btn w-100 mt-4" onclick="handlePaymentClick()">I have made payment</button>
+        <button type="button" class="btn primary-btn w-100 mt-4" onclick="handlePaymentClick()">Continue</button>
       </div>
   </form>
 
@@ -127,12 +120,10 @@
         return;
       }
 
-      const { name, logo, address, currency } = coinData;
+      const { name, logo} = coinData;
 
       document.getElementById("coinName").textContent = name;
-      document.getElementById("walletAddress").textContent = address;
       document.getElementById("coinLogo").src = logo;
-      document.getElementById("coinCurrency").textContent = currency;
 
       // ✅ Generate QR code using the address
       const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(address)}&size=150x150`;

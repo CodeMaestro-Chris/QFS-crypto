@@ -88,9 +88,9 @@
     <div class="wallet-actions">
       <a href="./coin.html" class="action text-decoration-none">
         <div class="action-icon bg-dark"><i class="bi bi-bank"></i></div>
-        <p class="text-white">Send</p>
+        <p class="text-white">Deposit</p>
       </a>
-      <a href="./coin.html" class="action text-decoration-none">
+      <a href="./withdraw.html" class="action text-decoration-none">
         <div class="action-icon bg-dark"><i class="bi bi-cash-coin"></i></div>
         <p class="text-white">Withdraw</p>
       </a>
@@ -119,11 +119,12 @@
         return;
       }
 
-      const { name, logo, address } = coinData;
+      const { name, logo, address, currency } = coinData;
 
       document.getElementById("coinName").textContent = name;
       // document.getElementById("walletAddress").textContent = address;
       document.getElementById("coinLogo").src = logo;
+      document.getElementById("coinCurrency").textContent = currency;
 
       // ✅ Generate QR code using the address
       // const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(address)}&size=150x150`;
