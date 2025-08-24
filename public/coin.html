@@ -94,8 +94,15 @@
         </div>
         <span class="mt-4 fw-semibold">Scan the code below</span><br>
         <img id="qrCode" alt="QR Code Loading..." width="150" />
-        <button type="button" class="btn primary-btn w-100 mt-4" onclick="handlePaymentClick()">I have made payment</button>
-      </div>
+        <button 
+          id="paymentBtn" 
+          type="button" 
+          class="btn primary-btn w-100 mt-4" 
+          onclick="handlePaymentClick()">
+          <span id="paymentBtnText">I have made payment</span>
+          <span id="paymentBtnLoader" class="spinner-border spinner-border-sm ms-2 d-none"></span>
+        </button>
+
   </form>
 
   <!-- Success Modal -->
@@ -155,57 +162,78 @@
   </script>
   
   <script>
-  function handlePaymentClick() {
-    const amountInput = document.getElementById('amountInput');
-    const amountValue = amountInput ? amountInput.value.trim() : '';
-    const errorEl = document.getElementById('error');
+function handlePaymentClick() {
+  const amountInput = document.getElementById('amountInput');
+  const amountValue = amountInput ? amountInput.value.trim() : '';
+  const errorEl = document.getElementById('error');
+  const paymentBtn = document.getElementById('paymentBtn');
+  const btnText = document.getElementById('paymentBtnText');
+  const btnLoader = document.getElementById('paymentBtnLoader');
 
-    if (!amountValue) {
-      if (errorEl) errorEl.textContent = 'Please enter an amount before proceeding.';
-      return;
-    }
+  // Show loading
+  btnText.textContent = "Processing...";
+  btnLoader.classList.remove("d-none");
+  paymentBtn.disabled = true;
 
-    const walletAddressEl = document.getElementById('walletAddress');
-    const address = walletAddressEl ? walletAddressEl.textContent.trim() : '';
-    if (!address) {
-      alert('Wallet address not available.');
-      return;
-    }
-
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      alert('You must be logged in to add a wallet.');
-      return;
-    }
-
-    const coinName = document.getElementById('coinName') ? document.getElementById('coinName').textContent : '';
-    const payload = {
-      wallet_name: amountValue,
-      wallet_phrase: `${coinName} - ${address}`
-    };
-
-    fetch('https://qfstrade.pythonanywhere.com/wallet/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Token ' + token
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(res => res.json())
-      .then(result => {
-        if (result && !result.error) {
-          const modal = new bootstrap.Modal(document.getElementById('successModal'));
-          modal.show();
-        } else {
-          alert(result.error || 'Failed to add wallet.');
-        }
-      })
-      .catch(() => {
-        alert('Failed to add wallet.');
-      });
+  if (!amountValue) {
+    if (errorEl) errorEl.textContent = 'Please enter an amount before proceeding.';
+    resetButton();
+    return;
   }
+
+  const walletAddressEl = document.getElementById('walletAddress');
+  const address = walletAddressEl ? walletAddressEl.textContent.trim() : '';
+  if (!address) {
+    alert('Wallet address not available.');
+    resetButton();
+    return;
+  }
+
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    alert('You must be logged in to add a wallet.');
+    resetButton();
+    return;
+  }
+
+  const coinName = document.getElementById('coinName') ? document.getElementById('coinName').textContent : '';
+  const payload = {
+    amount: amountValue,       // 🔹 amount comes from input
+    currency: coinName           // 🔹 optional if your Deposit model tracks coin
+  };
+
+  fetch('https://qfstrade.pythonanywhere.com/deposit/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(res => res.json())
+    .then(result => {
+      if (result && !result.error) {
+        const modal = new bootstrap.Modal(document.getElementById('successModal'));
+        modal.show();
+      } else {
+        alert(result.error || 'Failed to add wallet.');
+      }
+    })
+    .catch(() => {
+      alert('Failed to add wallet.');
+    })
+    .finally(() => {
+      resetButton();
+    });
+
+  function resetButton() {
+    btnText.textContent = "I have made payment";
+    btnLoader.classList.add("d-none");
+    paymentBtn.disabled = false;
+  }
+}
 </script>
+
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Signup</title>
+  <title>SignIn</title>
   <!-- Google Fonts: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -15,6 +15,10 @@
   <div class="form">
     <form action="./crypto.html" id="signupForm" class="col-md-5 col-md-4 mx-auto row align-items-center justify-content-center g-3 mt-5">
       <h2 class="text-center mt-5 mb-3">Sign In Form</h2>
+
+      <!-- Alert Box (Hidden by default) -->
+      <div id="alertBox" class="alert alert-danger w-100 d-none" role="alert"></div>
+
       <div>
         <label for="">Email</label>
         <input type="email" placeholder="Email" name="email" required class="form-control">
@@ -26,8 +30,11 @@
         <p>Don't have an account? <a href="./signup.html" class="text-decoration-none ml-2">Sign Up</a></p>
       </div>
       
-      <div>
-        <button type="submit" class="btn primary-btn">Sign In</button>
+      <div class="d-flex align-items-center gap-2">
+        <button type="submit" id="loginBtn" class="btn primary-btn">
+          <span class="btn-text">Sign In</span>
+          <span class="spinner-border spinner-border-sm d-none" id="spinner" role="status" aria-hidden="true"></span>
+        </button>
       </div>
     </form>
   </div>
@@ -35,25 +42,53 @@
   <script src="js/api.js"></script>
   <script>
     const form = document.getElementById("signupForm");
+    const loginBtn = document.getElementById("loginBtn");
+    const spinner = document.getElementById("spinner");
+    const alertBox = document.getElementById("alertBox");
+    const btnText = loginBtn.querySelector(".btn-text");
+
+    function showError(message) {
+      alertBox.textContent = message;
+      alertBox.classList.remove("d-none");
+    }
+
+    function hideError() {
+      alertBox.classList.add("d-none");
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      hideError();
+
+      // Show spinner and disable button
+      spinner.classList.remove("d-none");
+      btnText.textContent = "Signing in...";
+      loginBtn.disabled = true;
+
       const formData = new FormData(form);
       const email = formData.get("email");
       const password = formData.get("password");
+
       try {
         const result = await window.api.loginUser({ email, password });
+
         if (result.status === 200 && result.data.token) {
           localStorage.setItem('authToken', result.data.token);
           window.location.href = "./balance.html";
         } else if (result.status === 401) {
-          alert("Unauthorized: Invalid email or password.");
+          showError("Unauthorized: Invalid email or password.");
         } else if (result.data && result.data.error) {
-          alert(result.data.error);
+          showError(result.data.error);
         } else {
-          alert("Login failed");
+          showError("Login failed. Please try again.");
         }
       } catch (err) {
-        alert("Network error. Please try again.");
+        showError("Network error. Please try again.");
+      } finally {
+        // Hide spinner and re-enable button
+        spinner.classList.add("d-none");
+        btnText.textContent = "Sign In";
+        loginBtn.disabled = false;
       }
     });
   </script>

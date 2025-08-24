@@ -13,7 +13,12 @@
 </head>
 <body>
   <form id="signupForm" class="col-md-5 col-md-4 mx-auto row align-items-center justify-content-center g-3 mt-5 h-100">
-  <h2 class="text-center mt-5 mb-3">Signup Form</h2>
+    <h2 class="text-center mt-5 mb-3">Signup Form</h2>
+    
+    <!-- Alert box for errors/success -->
+    <div id="errorBox" class="alert alert-danger d-none" role="alert"></div>
+    <div id="successBox" class="alert alert-success d-none" role="alert"></div>
+
     <div>
       <label for="">Name</label>
       <input type="text" placeholder="Name" name="name" required class="form-control">
@@ -36,29 +41,64 @@
     </div>
     
     <div>
-      <button type="submit" class="btn primary-btn">Sign Up</button>
+      <button type="submit" class="btn primary-btn">
+        Sign Up
+        <span class="spinner-border spinner-border-sm d-none ms-2" id="loadingSpinner" role="status" aria-hidden="true"></span>
+      </button>
     </div>
   </form>
 
   <script src="js/api.js"></script>
   <script>
-    const form = document.getElementById("signupForm");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const name = formData.get("name");
-      const email = formData.get("email");
-      const password = formData.get("password");
-      const phone = formData.get("phone");
+  const form = document.getElementById("signupForm");
+  const errorBox = document.getElementById("errorBox");
+  const successBox = document.getElementById("successBox");
+  const spinner = document.getElementById("loadingSpinner");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Hide previous messages
+    errorBox.classList.add("d-none");
+    successBox.classList.add("d-none");
+
+    // Show spinner
+    spinner.classList.remove("d-none");
+
+    const formData = new FormData(form);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const phone = formData.get("phone");
+
+    try {
       const result = await window.api.registerUser({ name, email, password, phone });
-      if (result && !result.error) {
-        console.log(result);
-        window.location.href = "./login.html";
+
+      // ✅ Check explicitly for status 200 or 201
+      if (result.status === 200 || result.status === 201) {
+        successBox.textContent = "✅ Registration successful! Redirecting to login...";
+        successBox.classList.remove("d-none");
+
+        setTimeout(() => {
+          window.location.href = "./login.html";
+        }, 1500);
       } else {
-        alert(result.error || "Registration failed");
+        // ❌ Handle error with fallback
+        errorBox.textContent =
+          (result.data && result.data.error) ||
+          result.error ||
+          "❌ Registration failed. Please try again.";
+        errorBox.classList.remove("d-none");
       }
-    });
-  </script>
+    } catch (err) {
+      errorBox.textContent = "⚠️ Network error. Please try again.";
+      errorBox.classList.remove("d-none");
+    } finally {
+      spinner.classList.add("d-none");
+    }
+  });
+</script>
+
   
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -273,119 +273,208 @@
   
 
   <script>
-    // --- Mock data (edit freely) ------------------------------------------
-    // priceUSD: per coin price; amount: user balance
-    const assets = [
-      { symbol: 'Bitcoin',      name: 'BTC',     icon: './images/bitcoin.svg',              amount: 0,  priceUSD: 0 },
-      { symbol: 'Ethereum',     name: 'ETH',     icon: './images/Ethereum.svg',             amount: 0,  priceUSD: 0 },
-      { symbol: 'XRP',          name: 'Ripple',  icon: './images/xrp-xrp-logo.png',         amount: 0,  priceUSD: 0 },
-      { symbol: 'Litecoin',     name: 'LTC',     icon: './images/Litecoin.svg',             amount: 0,  priceUSD: 0 },
-      { symbol: 'Stellar',      name: 'XLM',     icon: './images/xlm.png',                  amount: 0,  priceUSD: 0 },
-      { symbol: 'Doge Coin',    name: 'DOGE',    icon: './images/dogecoin-doge-logo.png',   amount: 0,  priceUSD: 0 },
-      { symbol: 'Algorand',     name: 'ALGO',    icon: './images/algo.png',                 amount: 0,  priceUSD: 0 },
-      { symbol: 'Solana',       name: 'SOL',     icon: './images/Solana.svg',               amount: 0,  priceUSD: 0 },
-      { symbol: 'Cardano',      name: 'ADA',     icon: './images/cardano-ada-logo.png',     amount: 0,  priceUSD: 0 },
-      { symbol: 'Tron',         name: 'USDT',    icon: './images/tether-usdt-logo.png',     amount: 0,  priceUSD: 0 },
-      { symbol: 'Binance USD',  name: 'BUSD',    icon: './images/busd.png',                 amount: 0,  priceUSD: 0 },
-      { symbol: 'Shiba Inu',    name: 'SHIB ',   icon: './images/shiba-inu-shib-logo.png',  amount: 0,  priceUSD: 0 },
-      { symbol: 'PEPU',         name: 'PEPU',    icon: './images/pepu.png',                 amount: 0,  priceUSD: 0 },
-    ];
-    // Use BTC price from above dataset to compute BTC equivalent:
-    const BTC_PRICE = assets.find(a => a.symbol==='BTC')?.priceUSD ?? 112000;
+  // --- Mock data (edit freely) ------------------------------------------
+  // priceUSD: per coin price; amount: user balance
+  const assets = [
+    { symbol: 'Bitcoin',      name: 'BTC',     icon: './images/bitcoin.svg',              amount: 0,  priceUSD: 0 },
+    { symbol: 'Ethereum',     name: 'ETH',     icon: './images/Ethereum.svg',             amount: 0,  priceUSD: 0 },
+    { symbol: 'XRP',          name: 'XRP',     icon: './images/xrp-xrp-logo.png',         amount: 0,  priceUSD: 0 },
+    { symbol: 'Litecoin',     name: 'LTC',     icon: './images/Litecoin.svg',             amount: 0,  priceUSD: 0 },
+    { symbol: 'Stellar',      name: 'XLM',     icon: './images/xlm.png',                  amount: 0,  priceUSD: 0 },
+    { symbol: 'Doge Coin',    name: 'DOGE',    icon: './images/dogecoin-doge-logo.png',   amount: 0,  priceUSD: 0 },
+    { symbol: 'Algorand',     name: 'ALGO',    icon: './images/algo.png',                 amount: 0,  priceUSD: 0 },
+    { symbol: 'Solana',       name: 'SOL',     icon: './images/Solana.svg',               amount: 0,  priceUSD: 0 },
+    { symbol: 'Cardano',      name: 'ADA',     icon: './images/cardano-ada-logo.png',     amount: 0,  priceUSD: 0 },
+    { symbol: 'Tron',         name: 'USDT',    icon: './images/tether-usdt-logo.png',     amount: 0,  priceUSD: 0 },
+    { symbol: 'Binance USD',  name: 'BUSD',    icon: './images/busd.png',                 amount: 0,  priceUSD: 0 },
+    { symbol: 'Shiba Inu',    name: 'SHIB ',   icon: './images/shiba-inu-shib-logo.png',  amount: 0,  priceUSD: 0 }, /* note trailing space */
+    { symbol: 'PEPU',         name: 'PEPU',    icon: './images/pepu.png',                 amount: 0,  priceUSD: 0 },
+  ];
+  // Use BTC price from above dataset to compute BTC equivalent:
+  // const BTC_PRICE = assets.find(a => a.symbol==='BTC')?.priceUSD ?? 112000;
 
-    // --- Helpers -----------------------------------------------------------
-    const fmtUSD = n => (n<0?'-':'') + '$' + Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
-    const fmtAmt = n => n.toLocaleString(undefined,{minimumFractionDigits:0, maximumFractionDigits:8});
-    const qs = s => document.querySelector(s);
+  // --- Helpers -----------------------------------------------------------
+  const fmtUSD = n => (n<0?'-':'') + '$' + Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+  const fmtAmt = n => n.toLocaleString(undefined,{minimumFractionDigits:0, maximumFractionDigits:8});
+  const qs = s => document.querySelector(s);
 
-    // --- Render ------------------------------------------------------------
-    const state = {
-      hideZero: JSON.parse(localStorage.getItem('hideZero') ?? 'true'),
-      term: ''
+  // --- Render ------------------------------------------------------------
+  const state = {
+    // default to showing zeros as requested; user can still toggle Hide Zero
+    hideZero: JSON.parse(localStorage.getItem('hideZero') ?? 'false'),
+    term: '',
+    backendTotal: null,            // total from API
+    verificationStatus: null,      // 'verified' | 'pending' | 'rejected' | 'unverified'
+  };
+
+  // Total Calculate (kept intact)
+  // function computeTotals(list){
+  //   const equityUSD = list.reduce((sum,a)=> sum + (a.amount * a.priceUSD), 0);
+  //   const btcEq = equityUSD / BTC_PRICE;
+  //   return { equityUSD, btcEq };
+  // }
+
+  function render(){
+    // Hide Zero balances
+    qs('#hideZeroSwitch').checked = state.hideZero;
+
+    // Filtered list
+    let list = [...assets];
+    if(state.hideZero) list = list.filter(a => Math.abs(a.amount) > 0);
+
+    // Totals (keep original behavior)...
+    // const { equityUSD, btcEq } = computeTotals(list);
+    // qs('#equityUSD').textContent = fmtUSD(equityUSD) + ' ';
+
+    // ...but override with backend total if present (your endpoint computes total)
+    if (state.backendTotal !== null && !isNaN(state.backendTotal)) {
+      qs('#equityUSD').textContent = fmtUSD(state.backendTotal);
+    }
+
+    // Keep toggle working by storing the actual value on the element
+    qs('#equityUSD').dataset.actual = qs('#equityUSD').textContent;
+
+    // Update verification badge/text
+    const verifyEl = document.querySelector('.not-verified');
+    if (verifyEl && state.verificationStatus) {
+      const v = state.verificationStatus;
+      if (v === 'verified') {
+        verifyEl.textContent = 'Verified ✅';
+        verifyEl.style.color = 'green';   // make it green
+      } else if (v === 'pending') {
+        verifyEl.textContent = 'Pending ⏳';
+        verifyEl.style.color = 'orange';  // optional
+      } else if (v === 'rejected') {
+        verifyEl.textContent = 'Rejected ❌';
+        verifyEl.style.color = 'red';
+      } else {
+        verifyEl.textContent = 'Not Verified ❌';
+        verifyEl.style.color = 'gray';
+      }
+    }
+
+
+    // List
+    const container = qs('#assetList');
+    container.innerHTML = '';
+    list.forEach(a=>{
+      const usd = a.priceUSD;
+      const row = document.createElement('div');
+      row.className = 'asset';
+      row.innerHTML = `
+        <div class="coin-left">
+          <img class="coin-logo" src="${a.icon}" />
+          <div class="coin-meta">
+            <div class="fw-semibold">${a.symbol}</div>
+            <small>${a.name}</small>
+          </div>
+        </div>
+        <div class="amt">
+          <div class="${a.amount<0 ? 'neg' : ''}">${fmtAmt(a.amount)}</div>
+          <div class="usd">${fmtUSD(usd)}</div>
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  // --- API integration ----------------------------------------------------
+  function mergeCoinsFromAPI(apiCoins) {
+  // apiCoins is like: [{symbol:'BTC', quantity:..., priceUSD:..., amount:...}, ...]
+  const map = {};
+  apiCoins.forEach(c => {
+    const key = String(c.symbol || '').trim().toUpperCase();
+    map[key] = {
+      quantity: Number(c.quantity) || 0,
+      priceUSD: Number(c.priceUSD) || 0,
+      amount: Number(c.amount) || 0,  // total = quantity * priceUSD
     };
+  });
 
-    // Total Calculate
-    function computeTotals(list){
-      const equityUSD = list.reduce((sum,a)=> sum + (a.amount * a.priceUSD), 0);
-      const btcEq = equityUSD / BTC_PRICE;
-      return { equityUSD, btcEq };
+  // Merge values into your frontend assets
+  assets.forEach(a => {
+    const ticker = String(a.name || '').trim().toUpperCase();
+    if (map[ticker]) {
+      a.quantity = map[ticker].quantity;
+      a.priceUSD = map[ticker].amount;
+      a.amount = map[ticker].quantity;
+    } else {
+      a.quantity = 0;
+      a.priceUSD = 0;
+      a.amount = 0;
     }
+  });
+}
 
-    function render(){
-      // Hide Zero balances
-      qs('#hideZeroSwitch').checked = state.hideZero;
 
-      // Filtered list
-      let list = [...assets];
-      if(state.hideZero) list = list.filter(a => Math.abs(a.amount) > 0);
-      
-
-      // Totals
-      const { equityUSD, btcEq } = computeTotals(list);
-      qs('#equityUSD').textContent = fmtUSD(equityUSD) + ' ';
-      
-
-      // List
-      const container = qs('#assetList');
-      container.innerHTML = '';
-      list.forEach(a=>{
-        const usd = a.amount * a.priceUSD;
-        const row = document.createElement('div');
-        row.className = 'asset';
-        row.innerHTML = `
-          <div class="coin-left">
-            <img class="coin-logo" src="${a.icon}" />
-            <div class="coin-meta">
-              <div class="fw-semibold">${a.symbol}</div>
-              <small>${a.name}</small>
-            </div>
-          </div>
-          <div class="amt">
-            <div class="${a.amount<0 ? 'neg' : ''}">${fmtAmt(a.amount)}</div>
-            <div class="usd">${fmtUSD(usd)}</div>
-          </div>
-        `;
-        container.appendChild(row);
+  async function fetchDashboard(){
+    try{
+      const res = await fetch('https://qfstrade.pythonanywhere.com/dashboard/', {
+        headers: {
+          'Content-Type': 'application/json',
+          // include your auth if required:
+          'Authorization': 'Token ' + (localStorage.getItem('authToken') || '')
+        },
+        credentials: 'include' // if you're using session auth/csrf
       });
+      if(!res.ok) throw new Error('Failed to fetch dashboard');
+      const data = await res.json();
+
+      // Merge coin balances into assets
+      mergeCoinsFromAPI(data.coins || []);
+
+      // Store total & verification for UI
+      state.backendTotal = Number(data.total_balance) || 0;
+      state.verificationStatus = data.verification_status || 'unverified';
+
+      render();
+    }catch(err){
+      console.error('Dashboard fetch error:', err);
+      // still render the page with zeros so user sees the list
+      render();
     }
+  }
 
-    // --- Events ------------------------------------------------------------
-    // Hide zero
-    const hideSwitch = qs('#hideZeroSwitch');
-    hideSwitch.addEventListener('change', e=>{
-      state.hideZero = e.target.checked;
-      localStorage.setItem('hideZero', JSON.stringify(state.hideZero));
-      render();
-    });
+  // --- Events -------------------------------------------------------------
+  // Hide zero
+  const hideSwitch = qs('#hideZeroSwitch');
+  hideSwitch.addEventListener('change', e=>{
+    state.hideZero = e.target.checked;
+    localStorage.setItem('hideZero', JSON.stringify(state.hideZero));
+    render();
+  });
 
-    // Init
-    window.addEventListener('DOMContentLoaded', ()=>{
-      // restore persisted setting
-      if(state.hideZero === null) state.hideZero = true;
-      render();
-    });
-  </script>
+  // Init
+  window.addEventListener('DOMContentLoaded', ()=>{
+    if(state.hideZero === null) state.hideZero = false; // show zeros by default
+    // First paint with placeholders, then hydrate with API
+    render();
+    fetchDashboard();
+  });
+</script>
 
 <script>
-    const toggleBtn = document.getElementById("toggleBalance");
-    const balanceDiv = document.getElementById("equityUSD");
-  
-    let isVisible = true;  // balance starts as visible
-    const actualBalance = balanceDiv.innerText; // store original balance
-  
-    toggleBtn.addEventListener("click", () => {
-      if (isVisible) {
-        balanceDiv.innerText = "****"; // hide balance
-        toggleBtn.classList.remove("bi-eye");
-        toggleBtn.classList.add("bi-eye-slash");
-      } else {
-        balanceDiv.innerText = actualBalance; // show balance
-        toggleBtn.classList.remove("bi-eye-slash");
-        toggleBtn.classList.add("bi-eye");
-      }
-      isVisible = !isVisible;
-    });
-  </script>
+  // Eye toggle: uses dataset.actual set by render()
+  const toggleBtn = document.getElementById("toggleBalance");
+  const balanceDiv = document.getElementById("equityUSD");
+
+  let isVisible = true;  // balance starts visible
+
+  toggleBtn.addEventListener("click", () => {
+    if (isVisible) {
+      balanceDiv.innerText = "****";
+      toggleBtn.classList.remove("bi-eye");
+      toggleBtn.classList.add("bi-eye-slash");
+    } else {
+      // show the latest actual value as set by render()/API
+      balanceDiv.innerText = balanceDiv.dataset.actual || balanceDiv.innerText;
+      toggleBtn.classList.remove("bi-eye-slash");
+      toggleBtn.classList.add("bi-eye");
+    }
+    isVisible = !isVisible;
+  });
+</script>
+
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

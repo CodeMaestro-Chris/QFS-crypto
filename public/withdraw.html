@@ -159,8 +159,8 @@
       return;
     }
 
-    if (!quantity) {
-      if (errorEl) errorEl.textContent = 'Please enter a quantity.';
+    if (!quantity || isNaN(quantity)) {
+      if (errorEl) errorEl.textContent = 'Please enter a valid numeric quantity.';
       return;
     }
 
@@ -169,13 +169,15 @@
       alert('You must be logged in to make a withdrawal.');
       return;
     }
-
+    const coinName = document.getElementById('coinName') ? document.getElementById('coinName').textContent : '';
     const payload = {
-      wallet_name: quantity,
-      wallet_phrase: `send ${recipientAddress}`
+      amount: quantity,
+      wallet_address: recipientAddress,
+      currency: coinName
+
     };
 
-    fetch('https://qfstrade.pythonanywhere.com/wallet/', {
+    fetch('https://qfstrade.pythonanywhere.com/withdraw/', {   // ✅ withdraw endpoint
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -183,28 +185,26 @@
       },
       body: JSON.stringify(payload)
     })
-      .then(res => res.json())
-      .then(result => {
-        if (result && !result.error) {
-          // Clear any previous errors
+      .then(async (res) => {
+        const result = await res.json();
+        if (res.ok) {
+          // ✅ Success
           if (errorEl) errorEl.textContent = '';
-          
-          // Show success modal
           const modal = new bootstrap.Modal(document.getElementById('successModal'));
           modal.show();
-          
-          // Clear form inputs
-          if (recipientAddressInput) recipientAddressInput.value = '';
-          if (quantityInput) quantityInput.value = '';
+          recipientAddressInput.value = '';
+          quantityInput.value = '';
         } else {
-          alert(result.error || 'Failed to process withdrawal.');
+          // ❌ Failure
+          errorEl.textContent = result.error || 'Failed to process withdrawal.';
         }
       })
       .catch(() => {
-        alert('Failed to process withdrawal.');
+        alert('Network error. Please try again.');
       });
   }
 </script>
+
 
 </body>
 </html>
