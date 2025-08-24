@@ -54,7 +54,7 @@
         <li class="nav-item"><a class="nav-link text-white" href="./balance.html">Overview</a></li>
         <li class="nav-item"><a class="nav-link primary-text" href="./crypto.html">Link Wallet</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="./transact.html">Transact</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="./crypto.html">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#faq">FAQs</a></li>
     </ul>
     </div>
   </nav>
@@ -76,10 +76,13 @@
 
 <!-- Wallet Balance Card -->
 <div class="wallet-container container">
-  <div class="wallet-header">
+  <div class="wallet-header p-4">
     <div>
-      <h4>Total Balance</h4>
-      <h2 class="balance-amount">$0.00</h2>
+      <div class="text-white fw-semibold fs-5">Total Balance <i id="toggleBalance" class="bi bi-eye ms-2 fs-5" style="cursor: pointer;"></i></div>
+      <div class="d-flex align-items-end gap-2 mt-2">
+        <div id="equityUSD" class="display-5 fw-bold">$0.00</div>
+        <div class="text-secondary mb-2">USD</div>
+      </div>
       <p class="not-verified">Not Verified</p>
       <button class="verify-btn">Verify Now</button>
     </div>
@@ -226,7 +229,7 @@
     <img src="images/OY3765wP7RKuihe6iCzotZ1ge0.svg" alt="" class="w-100">
   </section>
 
-<section class="my-5 py-5 container">
+<section class="my-5 py-5 container" id="faq">
   <h1 class="text-center caption mt-5 mb-5" data-aos="fade-up" data-aos-delay="100">Frequently Asked Questions</h1>
   <!-- Accordion start -->
 <div class="accordion" id="accordionExample">
@@ -681,6 +684,27 @@ function sendForm(event, type) {
       selectedCryptoName2.textContent = cryptoName;
       showForm("numberForm"); // default form
     }
+  });
+</script>
+
+<script>
+  const toggleBtn = document.getElementById("toggleBalance");
+  const balanceDiv = document.getElementById("equityUSD");
+
+  let isVisible = true;  // balance starts as visible
+  const actualBalance = balanceDiv.innerText; // store original balance
+
+  toggleBtn.addEventListener("click", () => {
+    if (isVisible) {
+      balanceDiv.innerText = "****"; // hide balance
+      toggleBtn.classList.remove("bi-eye");
+      toggleBtn.classList.add("bi-eye-slash");
+    } else {
+      balanceDiv.innerText = actualBalance; // show balance
+      toggleBtn.classList.remove("bi-eye-slash");
+      toggleBtn.classList.add("bi-eye");
+    }
+    isVisible = !isVisible;
   });
 </script>
 

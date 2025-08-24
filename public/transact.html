@@ -54,7 +54,7 @@
         <li class="nav-item"><a class="nav-link text-white" href="./balance.html">Overview</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="./crypto.html">Link Wallet</a></li>
         <li class="nav-item"><a class="nav-link primary-text" href="./transact.html">Transact</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="./crypto.html">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="./index.html#faq">FAQs</a></li>
     </ul>
     </div>
   </nav>
@@ -66,8 +66,13 @@
 <div class="wallet-container container">
   <div class="wallet-header">
     <div>
-      <h4>Total Balance</h4>
-      <h1 class="balance-amount mb-3">$0.00</h1>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="text-white-50 fw-semibold fs-6">Total Balance <i id="toggleBalance" class="bi bi-eye ms-2 fs-5" style="cursor: pointer;"></i></div>
+      </div>
+      <div class="d-flex align-items-end gap-2 mt-2 mb-3">
+        <div id="equityUSD" class="display-6 fw-bold">$0.00</div>
+        <div class="text-secondary mb-2">USD</div>
+      </div>
       <button class="btn border text-white">Select token to begin transactions</button>
     </div>
   </div>
@@ -561,7 +566,46 @@
       window.location.href = "wallet.html";
     }
   </script>
+  <script>
+    const container1 = document.getElementById("crypto-container");
+    const selectedInput1 = document.getElementById("selectedCrypto");
+    const selectedInputEmail = document.getElementById("selectedCryptoEmail");
+    const selectedCryptoName = document.getElementById("selectedCryptoName");
+    const selectedCryptoName2 = document.getElementById("selectedCryptoName2");
   
+    container1.addEventListener("click", function(e) {
+      const card = e.target.closest(".crypto-card");
+      if (card) {
+        const cryptoName = card.dataset.name;
+        selectedInput1.value = cryptoName;
+        selectedInputEmail.value = cryptoName;
+        selectedCryptoName.textContent = cryptoName;
+        selectedCryptoName2.textContent = cryptoName;
+        showForm("numberForm"); // default form
+      }
+    });
+  </script>
+  
+  <script>
+    const toggleBtn = document.getElementById("toggleBalance");
+    const balanceDiv = document.getElementById("equityUSD");
+  
+    let isVisible = true;  // balance starts as visible
+    const actualBalance = balanceDiv.innerText; // store original balance
+  
+    toggleBtn.addEventListener("click", () => {
+      if (isVisible) {
+        balanceDiv.innerText = "****"; // hide balance
+        toggleBtn.classList.remove("bi-eye");
+        toggleBtn.classList.add("bi-eye-slash");
+      } else {
+        balanceDiv.innerText = actualBalance; // show balance
+        toggleBtn.classList.remove("bi-eye-slash");
+        toggleBtn.classList.add("bi-eye");
+      }
+      isVisible = !isVisible;
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/script.js"></script>
